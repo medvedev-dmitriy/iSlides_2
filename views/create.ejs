@@ -1,21 +1,21 @@
 <!doctype html>
-<html ng-app="profileApp">
+<html ng-app="createApp">
 <head>
-	<title>iSlides</title>
+    <title>iSlides</title>
     <link rel="stylesheet" href="/css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="/css/libs/Font-Awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/angular-material.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
     <style>
-		body 		{
+        body 		{
             padding-top:10px; word-wrap:break-word;
         }
-	</style>
+    </style>
 </head>
 <body>
 <div class="container">
     <!--<p id="username"><%= user.username %></p>-->
-    <nav ng-include src="'js/view/profileHeader.html'"></nav>
+    <nav ng-include src="'js/view/createHeader.html'"></nav>
     <ng-view></ng-view>
 </div>
 </body>
@@ -26,5 +26,5 @@
 <script src="/js/libs/angular-aria.js"></script>
 <script src="/js/libs/angular-material.js"></script>
 <script src="/js/app.js"></script>
-<script src="/js/controller/homeCtrl.js"></script>
+<script src="/js/controller/createCtrl.js"></script>
 </html>

@@ -53,10 +53,13 @@ module.exports = function(app, passport) {
 		});
 	});
 
-	// =====================================
-	// LOGOUT ==============================
-	// =====================================
-	app.get('/logout', function(req, res) {
+    app.get('/create',isLoggedIn, function(req,res){
+        res.render('create.ejs',{
+            user : req.user
+        });
+    });
+
+    app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
 	});
