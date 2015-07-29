@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<title>iSlides</title>
+    <link rel="stylesheet" href="/css/libs/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/css/libs/Font-Awesome/css/font-awesome.min.css">
+    <style>
+		body 		{ padding-top:10px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <p>fkdl</p>
+    </div>
+    <div class="row">
+        <div class="page-header">
+            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        </div>
+        <p>
+            <strong>id</strong>: <%= user.id %><br>
+            <strong>username</strong>: <%= user.username %><br>
+            <strong>password</strong>: <%= user.password %>
+        </p>
+    </div>
+</div>
+</body>
+<script src="/js/libs/jquery.js"></script>
+<script src="/js/libs/angular.js"></script>
+<script src="/js/libs/angular-route.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controller/logincontroller.js"></script>
+</html>
