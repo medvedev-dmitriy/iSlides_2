@@ -2,8 +2,9 @@
 
   <div class="row" style="margin-top:20px">
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-      <form role="form" action="/login" method="post" novalidate>
+      <form role="form" name="loginForm" novalidate>
        <span style="color:red;" id="validatemessage"></span>
+       <p ng-if="loginForm.host.username.$error.email">Please enter a valid email</p>
         <fieldset>
           <h2>Login</h2>
           <hr class="colorgraph">
@@ -19,7 +20,7 @@
           </div>
 
             <div class="form-group">
-              <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+              <button class="btn btn-lg btn-primary btn-block" ng-click="login(host)">Login</button>
             </div>
 
            <div class="form-group">

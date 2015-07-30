@@ -1,46 +1,55 @@
-
 'use strict';
 
-angular.module('clientApp', ['ngRoute'])
-    .config(function ($routeProvider) {
-  $routeProvider
-      .when('/', {
-        templateUrl: 'js/view/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/signup', {
-        templateUrl: 'js/view/signup.html',
-        controller: 'signupCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-});
+var iSlidesApp = angular.module('iSlidesApp', ['ngRoute']);
 
-var profileApp = angular.module('profileApp', ['ngRoute']);
+iSlidesApp.config(['$routeProvider',
+        function ($routeProvider) {
 
-profileApp.config(function ($routeProvider) {
-   $routeProvider
-       .when('/create',{
-           templateUrl: 'partials/create.html',
-           controller: 'CreateCtrl'
-       })
-       .otherwise({
-           templateUrl: 'partials/home.html',
-           controller: 'HomeCtrl'
-       })
-});
+        var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
+            var deferred = $q.defer();
+            $http.get('/isloggedin')
+                .success(function(user){
+                    if (user !== '0') {
+                        $rootScope.user = user;
+                        deferred.resolve();
+                    } else {
+                        deferred.reject();
+                        console.log("checkLog");
+                        $location.url('/');
+                    }
+                })
+                .error(function(){
+                    console.log("Error");
+                });
+            return deferred.promise;
+        };
 
-var createApp = angular.module('createApp', ['ngRoute']);
 
-createApp.config(function ($routeProvider){
-   $routeProvider
-       .when('/create',{
-           templateUrl: 'partials/create.html',
-           controller: 'CreateCtrl'
-       })
-       .otherwise({
-           templateUrl: 'partials/create.html',
-           controller: 'CreateCtrl'
-       })
-});
+        $routeProvider
+          .when('/', {
+            templateUrl: 'partials/login.html',
+            controller: 'LoginCtrl'
+          })
+          .when('/profile',{
+              templateUrl: 'partials/home.html',
+              controller: 'HomeCtrl',
+              resolve: {
+                  loggedin: checkLoggedin
+              }
+          })
+          .when('/signup', {
+            templateUrl: 'partials/signup.html',
+            controller: 'SignupCtrl'
+          })
+          .when('/create', {
+                templateUrl: 'partials/create.html',
+                controller: 'PresentationCtrl',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+          })
+          //.otherwise({
+          //  redirectTo: '/'
+          //});
+    }]);
+    
