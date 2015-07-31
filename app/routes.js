@@ -10,23 +10,10 @@ module.exports = function(app, passport) {
 
 	app.post('/login', passport.authenticate('local-login'),
         function(req, res) {
-            //if (req.body.remember) {
-            //  req.session.cookie.maxAge = 1000 * 60 * 3;
-            //} else {
-            //  req.session.cookie.expires = false;
-            //}
             res.send(req.user);
     });
 
-	//app.get('/signup', function(req, res) {
-	//	res.render('signup.ejs', { message: req.flash('signupMessage') });
-	//});
-
-	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect : '/profile',
-		failureRedirect : '/signup',
-		failureFlash : true
-	}),
+	app.post('/signup', passport.authenticate('local-signup'),
     function(req,res){
     	res.send(req.flash);
         res.send(req.user);
@@ -37,12 +24,6 @@ module.exports = function(app, passport) {
 			user : req.user
 		});
 	});
-
-    //app.get('/create',isLoggedIn, function(req,res){
-    //    res.render('create.ejs',{
-    //        user : req.user
-    //    });
-    //});
 
     app.get('/logout', function(req, res) {
 		req.logout();

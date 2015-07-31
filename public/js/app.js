@@ -1,6 +1,6 @@
 'use strict';
 
-var iSlidesApp = angular.module('iSlidesApp', ['ngRoute']);
+var iSlidesApp = angular.module('iSlidesApp', ['ngRoute','dnd']);
 
 iSlidesApp.config(['$routeProvider',
         function ($routeProvider) {
@@ -41,6 +41,13 @@ iSlidesApp.config(['$routeProvider',
             templateUrl: 'partials/signup.html',
             controller: 'SignupCtrl'
           })
+          .when('/presentation/edit/:index', {
+            templateUrl: 'partials/presentationEdit.html',
+            controller: 'PresentationCtrl',
+            resolve: {
+                loggedin: checkLoggedin
+            }
+          })
           .when('/create', {
                 templateUrl: 'partials/create.html',
                 controller: 'PresentationCtrl',
@@ -48,8 +55,8 @@ iSlidesApp.config(['$routeProvider',
                     loggedin: checkLoggedin
                 }
           })
-          //.otherwise({
-          //  redirectTo: '/'
-          //});
+          .otherwise({
+            redirectTo: '/'
+          });
     }]);
     

@@ -3,6 +3,37 @@
 }
 
 #home {
-    padding-top: 150px;
+    padding-top: 50px;
     padding-bottom: 20px;
+}
+
+.slide {
+    width: 640px;
+    height: 480px;
+    margin: 0 auto;
+    background-color: #00b3ee;
+}
+
+.tools {
+    width: auto;
+    height: 100px;
+    background-color: #a6e1ec;
+}
+.tools li{
+    float: left;
+    margin: 5px 10px;
+}
+.circle {
+    width: 90px;
+    height: 90px;
+    display: block;
+    background-color: #255625;
+    border-radius: 50%;
+}
+
+.rectangle {
+    width: 90px;
+    height: 90px;
+    display: block;
+    background-color: #255625;
 }
