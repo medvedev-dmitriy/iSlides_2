@@ -1,18 +1,20 @@
 'use strict';
 
-iSlidesApp.controller('HomeCtrl',[
+iSlidesApp.controller('HomeCtrl', [
     '$scope',
     '$http',
     '$location',
     'HomeService',
     'LoginService',
-    function($scope, $http, $location, HomeService, LoginService){
-        $scope.logout = function() {
+    'PresentationService',
+    function ($scope, $http, $location, HomeService, LoginService, PresentationService) {
+        $scope.logout = function () {
             return LoginService.logout();
         };
 
-        $scope.createPresentation = function(){
-            //return HomeService.createPresentation();
+        $scope.presentations = PresentationService.presentations;
+
+        $scope.createPresentation = function () {
             $location.path('/create');
         }
     }

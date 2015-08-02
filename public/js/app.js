@@ -1,6 +1,6 @@
 'use strict';
 
-var iSlidesApp = angular.module('iSlidesApp', ['ngRoute','dnd']);
+var iSlidesApp = angular.module('iSlidesApp', ['ngRoute','dnd','cloudinary','angularFileUpload']);
 
 iSlidesApp.config(['$routeProvider',
         function ($routeProvider) {
@@ -26,37 +26,41 @@ iSlidesApp.config(['$routeProvider',
 
 
         $routeProvider
-          .when('/', {
-            templateUrl: 'partials/login.html',
-            controller: 'LoginCtrl'
-          })
-          .when('/profile',{
-              templateUrl: 'partials/home.html',
-              controller: 'HomeCtrl',
-              resolve: {
-                  loggedin: checkLoggedin
+            .when('/', {
+                templateUrl: 'partials/login.html',
+                controller: 'LoginCtrl'
+            })
+            .when('/profile',{
+                templateUrl: 'partials/home.html',
+                controller: 'HomeCtrl',
+                resolve: {
+                    loggedin: checkLoggedin
               }
-          })
-          .when('/signup', {
-            templateUrl: 'partials/signup.html',
-            controller: 'SignupCtrl'
-          })
-          .when('/presentation/edit/:index', {
-            templateUrl: 'partials/presentationEdit.html',
-            controller: 'PresentationCtrl',
-            resolve: {
-                loggedin: checkLoggedin
-            }
-          })
-          .when('/create', {
+            })
+            .when('/signup', {
+                templateUrl: 'partials/signup.html',
+                controller: 'SignupCtrl'
+            })
+            .when('/presentation/edit/:index', {
+                templateUrl: 'partials/presentationEdit.html',
+                controller: 'PresentationCtrl',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when('/create', {
                 templateUrl: 'partials/create.html',
                 controller: 'PresentationCtrl',
                 resolve: {
                     loggedin: checkLoggedin
                 }
-          })
-          .otherwise({
-            redirectTo: '/'
-          });
+            })
+            .when('/file',{
+                templateUrl: 'partials/file-upload.html',
+                controller: 'PhotoUploadCtrl'
+            })
+            .otherwise({
+              redirectTo: '/'
+            });
     }]);
     

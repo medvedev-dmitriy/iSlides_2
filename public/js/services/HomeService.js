@@ -9,7 +9,6 @@ iSlidesApp.factory('HomeService',[
         HomeService.presentations = [];
 
         HomeService.createPresentation = function(){
-            console.log('homeservice');
             $location.path('/create');
         };
 

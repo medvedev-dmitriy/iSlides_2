@@ -13,11 +13,15 @@ module.exports = function(app, passport) {
             res.send(req.user);
     });
 
-	app.post('/signup', passport.authenticate('local-signup'),
-    function(req,res){
-    	res.send(req.flash);
-        res.send(req.user);
-    });
+    app.post('/signup', passport.authenticate('local-signup', {
+            successRedirect : '/profile',
+            failureRedirect : '/signup',
+            failureFlash : true
+        }),
+        function(req,res){
+            res.send(req.flash);
+            res.send(req.user);
+        });
 
 	app.get('/profile', isLoggedIn, function(req, res) {
 		res.render('index.ejs', {

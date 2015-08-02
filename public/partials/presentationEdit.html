@@ -22,36 +22,28 @@
         </div>
 </nav>
 
-<div class="container-fluid" id="home">
+<div class="container-fluid" id="home" ng-controller="DragCtrl as main">
     <div class="row tools">
         <ul>
-            <div class = "circle draggable handle" style = "position: absolute;"
-                 ng-style = "{'line-height': main.rect.height}"
-                 ng-click = "click(!$dragged && !$resized && !$rotated, $dropmodel)"
-
-                 dnd-draggable = "true"
-                 dnd-draggable-opts = "{layer: 'layer1' }"
-                 dnd-on-dragstart = "main.dragstart($dropmodel, $dragmodel)"
-                 dnd-on-drag = "main.drag($dropmodel, $dragmodel)"
-                 dnd-on-dragend = "main.dragend($dropmodel, $dragmodel)"
-
-                 dnd-rotatable = "true"
-                 dnd-on-rotatestart = "main.dragstart()"
-                 dnd-on-rotate = "main.drag()"
-                 dnd-on-rotateend = "main.dragend()"
-
-                 dnd-resizable = "true"
-                 dnd-on-resizestart = "main.dragstart()"
-                 dnd-on-resize = "main.drag()"
-                 dnd-on-resizeend = "main.dragend()"
-                 dnd-containment = "'.dnd-container'"
-
-                 dnd-rect = "main.rect"
-                 dnd-fittext = "{width:main.rect.width, height:main.rect.height}"
-                 dnd-model = "main.dragmodel">
-             </div>
-            <!--<li class="circle"></li>-->
-            <!--<li class="rectangle"></li>-->
+            <li class="circle"
+                dnd-draggable = "true"
+                dnd-rotatable = "true"
+                dnd-resizable = "true"
+                    >Circle</li>
+            <li class="rectangle"
+                dnd-draggable = "true"
+                dnd-draggable-opts = "{layer: 'layer1', helper: 'clone' }"
+                dnd-model = "tool"
+                    >Rectangle</li>
+            <li dnd-draggable = "true"
+                dnd-rotatable = "true"
+                dnd-resizable = "true">Text</li>
+            <li dnd-draggable = "true"
+                dnd-rotatable = "true"
+                dnd-resizable = "true"
+                dnd-rect>
+                fj
+            </li>
         </ul>
     </div>
     <div class="row">
@@ -60,16 +52,14 @@
                 <li class="list-group-item">
                     <img src="/img/slide.jpg" alt="slide"/>
                 </li>
-                <li class="list-group-item">
-                    <img src="/img/slide.jpg" alt="slide"/>
-                </li>
-                <li class="list-group-item">
-                    <img src="/img/slide.jpg" alt="slide"/>
-                </li>
             </ul>
         </div>
         <div class="col-lg-10 col-md-10">
-            <div class="slide"></div>
+            <div class="slide"
+                 dnd-droppable = "true"
+                 dnd-droppable-opts = "{layer: 'layer1', helper: 'clone'}"
+                 dnd-on-drop = "drop($dropmodel, $dragmodel)"
+                 dnd-model = "dropmodel"></div>
         </div>
     </div>
 </div>

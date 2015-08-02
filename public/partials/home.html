@@ -26,18 +26,10 @@
 
 <div class="container-fluid" id="home">
     <h1>Home</h1>
-    <div class="row" ng-repeat="presentation in presintations">
+    <div class="row" ng-repeat="presentation in presentations">
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>{{presentation.name}}</h2>
+            <p><a class="btn btn-default" href="#/presentation/edit/1" role="button">{{presentation.tags}} &raquo;</a></p>
         </div>
     </div>
 </div>

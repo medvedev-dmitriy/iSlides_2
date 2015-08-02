@@ -11,29 +11,40 @@
     width: 640px;
     height: 480px;
     margin: 0 auto;
-    background-color: #00b3ee;
+    background-color: gainsboro;
+    z-index: -10;
 }
 
 .tools {
     width: auto;
     height: 100px;
-    background-color: #a6e1ec;
+    background-color: gray;
+    position: relative;
 }
+
 .tools li{
-    float: left;
+    display: inline-block;
     margin: 5px 10px;
+    z-index: 1;
 }
+
 .circle {
     width: 90px;
     height: 90px;
-    display: block;
     background-color: #255625;
+    border: solid 4px brown;
     border-radius: 50%;
+    vertical-align: middle;
 }
 
 .rectangle {
     width: 90px;
     height: 90px;
-    display: block;
     background-color: #255625;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+.handle {
+    cursor: pointer;
 }

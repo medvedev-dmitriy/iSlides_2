@@ -11,7 +11,6 @@ iSlidesApp.factory('PresentationService',[
         PresentationService.create = function(presentation){
             var index = PresentationService.presentations.length;
             PresentationService.presentations.push(presentation);
-            console.log('create presentation');
             return $location.path('/presentation/edit/' + index);
         };
 
