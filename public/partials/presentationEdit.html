@@ -23,7 +23,7 @@
         </div>
 </nav>
 
-<div class="container-fluid" id="home" ng-controller="DragCtrl as main">
+<div class="container-fluid" id="home" >
     <div class="row tools clearfix">
         <div class="col-lg-3 col-md-5">
             <ul>
@@ -43,23 +43,30 @@
             </ul>
         </div>
         <div class="col-lg-10 col-md-10">
-            <div>
-            <div class="slide"
-                 dnd-model = "dropmodel"
-                 dnd-container
-                 dnd-droppable = "true"
-                 >
-                <div ng-class="tool"
-                     style = "position: absolute; top: 0px;left: 270px;"
-                     ng-repeat="tool in slideTools track by $index"
-                        dnd-draggable="true"
-                        dnd-resizable="true"
-                        dnd-rotatable="true"
-                        dnd-containment="slide"
-                        dnd-model = "main.dragmodel">
-
-                </div>
-            </div>
+                <div class="slide"
+                     dnd-model = "dropmodel"
+                     dnd-container
+                     dnd-droppable = "true">
+                    <div ng-class="tool"
+                         class="slideTools"
+                         style = "position: absolute; top: 0;left: 270px;"
+                         ng-repeat="tool in slideTools track by $index"
+                         dnd-draggable="true"
+                         dnd-resizable="true"
+                         dnd-rotatable="true"
+                         dnd-containment="slide">
+                        <textarea type="{{tool}}" ng-if="tool === 'text'"/>
+                        <iframe dnd-draggable="true"
+                                dnd-resizable="true"
+                                dnd-rotatable="true"
+                                dnd-containment="slide"
+                                ng-if="tool.name == 'Video'"
+                                width="560" height="315"
+                                ng-src="{{tool.url}}"
+                                frameborder="0"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>

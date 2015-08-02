@@ -8,15 +8,21 @@ iSlidesApp.controller('PresentationCtrl',[
     'LoginService',
     'PresentationService',
     '$routeParams',
-    function($scope, $http, $location, HomeService, LoginService, PresentationService, $routeParams){
+    '$sce',
+    function($scope, $http, $location, HomeService, LoginService, PresentationService, $routeParams, $sce){
 
         $scope.tools = PresentationService.tools;
         $scope.slideTools = [];
 
         $scope.addToSlide = function(tool){
-            console.log(tool);
+            if(tool === 'Video') {
+                var url = prompt('url?');
+                $scope.slideTools.push({name: tool, url: $sce.trustAsResourceUrl(url)});
+                console.log($scope.slideTools);
+                return;
+            }
             $scope.slideTools.push(tool.toLowerCase());
-            console.log($scope.slideTools);
+            console.log(slideTools);
         };
 
         $scope.logout = function() {

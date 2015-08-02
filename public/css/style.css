@@ -25,26 +25,30 @@
     margin: 5px 10px;
 }
 
-.circle {
+.handle {
+    cursor: pointer;
+}
+
+.slideTools{
     position: absolute;
     margin: 0;
     width: 90px;
     height: 90px;
-    background-color: #255625;
-    border: solid 4px brown;
-    border-radius: 50%;
+    text-align: center;
     vertical-align: middle;
 }
 
-.rectangle {
-    position: absolute;
-    margin: 0;
-    width: 90px;
-    height: 90px;
+.circle {
     background-color: #255625;
-    z-index: 1;
+    border: solid 4px brown;
+    border-radius: 50%;
 }
 
-.handle {
-    cursor: pointer;
+.rectangle {
+    background-color: #255625;
+    /*z-index: 1;*/
+}
+
+.video {
+    border: solid 1px red;
 }
