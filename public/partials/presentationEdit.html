@@ -13,6 +13,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#/profile">Home</a></li>
                     <li><a href="#/create">Create new presentation</a></li>
+                    <li><a ng-click="presentation()">Current</a></li>
                 </ul>
                 <div class="navbar-right">
                     <a href="#/profile" class="navbar-brand">Hello, {{user.username}}</a>
@@ -23,28 +24,15 @@
 </nav>
 
 <div class="container-fluid" id="home" ng-controller="DragCtrl as main">
-    <div class="row tools">
-        <ul>
-            <li class="circle"
-                dnd-draggable = "true"
-                dnd-rotatable = "true"
-                dnd-resizable = "true"
-                    >Circle</li>
-            <li class="rectangle"
-                dnd-draggable = "true"
-                dnd-draggable-opts = "{layer: 'layer1', helper: 'clone' }"
-                dnd-model = "tool"
-                    >Rectangle</li>
-            <li dnd-draggable = "true"
-                dnd-rotatable = "true"
-                dnd-resizable = "true">Text</li>
-            <li dnd-draggable = "true"
-                dnd-rotatable = "true"
-                dnd-resizable = "true"
-                dnd-rect>
-                fj
-            </li>
-        </ul>
+    <div class="row tools clearfix">
+        <div class="col-lg-3 col-md-5">
+            <ul>
+                <li ng-click="addToSlide(tool)" ng-repeat="tool in tools" class="btn btn-info">{{tool}}</li>
+            </ul>
+        </div>
+        <div class="col-lg-9 col-md-7">
+
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-2 col-md-2">
@@ -55,11 +43,25 @@
             </ul>
         </div>
         <div class="col-lg-10 col-md-10">
+            <div>
             <div class="slide"
+                 dnd-model = "dropmodel"
+                 dnd-container
                  dnd-droppable = "true"
-                 dnd-droppable-opts = "{layer: 'layer1', helper: 'clone'}"
-                 dnd-on-drop = "drop($dropmodel, $dragmodel)"
-                 dnd-model = "dropmodel"></div>
+                 >
+                <div ng-class="tool"
+                     style = "position: absolute; top: 0px;left: 270px;"
+                     ng-repeat="tool in slideTools track by $index"
+                        dnd-draggable="true"
+                        dnd-resizable="true"
+                        dnd-rotatable="true"
+                        dnd-containment="slide"
+                        dnd-model = "main.dragmodel">
+
+                </div>
+            </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
