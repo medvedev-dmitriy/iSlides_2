@@ -8,7 +8,7 @@ iSlidesApp.factory('PresentationService',[
 
         PresentationService.presentations = [];
 
-        PresentationService.tools = ['Text','Image','Video','Rectangle','Circle'];
+        PresentationService.tools = ['Text','Rectangle','Video','Circle'];
 
         PresentationService.create = function(presentation){
             var index = PresentationService.presentations.length;

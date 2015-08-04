@@ -24,14 +24,21 @@
 </nav>
 
 <div class="container-fluid" id="home" >
-    <div class="row tools clearfix">
-        <div class="col-lg-3 col-md-5">
+    <div class="row tools clearfix" >
+        <div class="col-lg-4 col-md-4">
             <ul>
                 <li ng-click="addToSlide(tool)" ng-repeat="tool in tools" class="btn btn-info">{{tool}}</li>
             </ul>
         </div>
-        <div class="col-lg-9 col-md-7">
+        <div class="col-lg-6 col-md-6">
 
+        </div>
+        <div class="col-lg-2 col-md-2" ng-controller="PhotoUploadCtrl">
+            <form>
+                <div class="form_line">
+                    <div class="btn btn-success" ng-file-select ng-multiple="true" title="upload" resetOnClick="true" ng-model="files">Upload Image</div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row">
@@ -42,7 +49,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-10 col-md-10">
+        <div class="col-lg-8 col-md-8">
                 <div class="slide"
                      dnd-model = "dropmodel"
                      dnd-container
@@ -66,9 +73,29 @@
                                 frameborder="0"
                                 allowfullscreen>
                         </iframe>
+                        <cl-image public-id="{{tool.url}}"
+                                  ng-if="tool.name == 'image'"
+                                  ng-class="slideImage"
+                                  height="100"
+                                  crop="fit" quality="80" format="jpg"/>
                     </div>
                 </div>
-            </div>
+        </div>
+        <div class="col-lg-2 col-md-2">
+            <div class="slider clearfix" ng-controller="PhotoUploadCtrl">
+                <!--ng-repeat="photo in photos"-->
+                <p ng-if="photos.length === 0 || !photos">No photos were added yet.</p>
+                <div class="slide-item" ng-repeat="photo in photos" ng-hide="delete">
+                    <!--<img src="/img/slide.jpg" class="image" alt="slide"/>-->
+                    <div>
+                        <cl-image public-id="{{photo.public_id}}" class="image"  height="100" crop="fit" quality="80" format="jpg"/>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-success" ng-click="addImage(photo.public_id)">Add </a>
+                        <a class="btn btn-danger"  ng-click="delete=true">Delete</a>
+                    </div>
+                </div>
+        </div>
         </div>
     </div>
 </div>

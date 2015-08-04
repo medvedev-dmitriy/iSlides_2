@@ -25,6 +25,9 @@ iSlidesApp.controller('PresentationCtrl',[
             console.log(slideTools);
         };
 
+        $scope.addImage = function(url){
+            $scope.slideTools.push({name: 'image', url: $sce.trustAsResourceUrl(url)});
+        };
         $scope.logout = function() {
             return LoginService.logout();
         };

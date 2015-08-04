@@ -16,7 +16,7 @@
 
 .tools {
     width: auto;
-    height: 100px;
+    height: 110px;
     border: solid gray 1px;
 }
 
@@ -32,23 +32,52 @@
 .slideTools{
     position: absolute;
     margin: 0;
-    width: 90px;
-    height: 90px;
     text-align: center;
     vertical-align: middle;
 }
 
 .circle {
+    width: 90px;
+    height: 90px;
     background-color: #255625;
     border: solid 4px brown;
     border-radius: 50%;
 }
 
 .rectangle {
+    width: 90px;
+    height: 90px;
     background-color: #255625;
-    /*z-index: 1;*/
 }
 
 .video {
     border: solid 1px red;
+}
+
+.slider {
+    width: 100%;
+    height: 480px;
+    overflow: auto;
+}
+
+.slide-item {
+    margin: 5px 5px;
+    padding: 0;
+}
+
+.image {
+    display: block;
+    margin: 0 auto 4px;
+}
+
+.buttons {
+    width: 130px;
+    display: block;
+    margin: auto;
+}
+
+.slideImage {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
