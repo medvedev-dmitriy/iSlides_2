@@ -1,0 +1,35 @@
+<div class="slide" dnd-model = "dropmodel" dnd-container dnd-droppable = "true">
+    <div ng-class="tool.name"
+         class="slideTools"
+         style = "position: absolute; top: 0;left: 270px; background: {{tool.color}}"
+         ng-repeat="tool in slideTools track by $index"
+         dnd-draggable="true"
+         dnd-resizable="true"
+         dnd-rotatable="true"
+         dnd-containment="slide"
+         dnd-on-resizestart = "drag.dragstart()"
+         dnd-on-resize = "drag.drag()"
+         dnd-on-resizeend = "drag.dragend()"
+         dnd-rect = "dnd.rect"
+         data-context-event="contextmenu"
+         data-context-menu="/partials/context-menu.html"
+         ng-show="tool.show">
+        <textarea ng-model="text.me" type="text" ng-if="tool.name === 'text'"  ng-hide="show">
+            <div ng-if="tool.name === 'text'" ng-show="show" style="font-size: {{tool.size}}">{{text.me}} fdf</div>
+            {{text.me}}
+        </textarea>
+        <button ng-if="tool.name === 'text'" class="btn btn-success" ng-click="show=!show">ok</button>
+        <iframe
+                ng-if="tool.name == 'video'"
+                width="{{dnd.rect.width}}" height="{{dnd.rect.height}}"
+                ng-src="{{tool.url}}"
+                frameborder="1"
+                allowfullscreen>
+        </iframe >
+        <cl-image public-id="{{tool.url}}"
+                  ng-if="tool.name == 'image'"
+                  ng-class="slideImage"
+                  height="100"
+                  crop="fit" quality="80" format="jpg"/>
+    </div>
+</div>

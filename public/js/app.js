@@ -34,36 +34,36 @@ iSlidesApp.config(['$routeProvider',
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/login.html',
-                controller: 'LoginCtrl'
+                controller: 'LoginController'
             })
             .when('/profile',{
                 templateUrl: 'partials/home.html',
-                controller: 'HomeCtrl',
+                controller: 'HomeController',
                 resolve: {
                     loggedin: checkLoggedin
               }
             })
             .when('/signup', {
                 templateUrl: 'partials/signup.html',
-                controller: 'SignupCtrl'
+                controller: 'SignupController'
             })
             .when('/presentation/edit/:index', {
                 templateUrl: 'partials/presentationEdit.html',
-                controller: 'PresentationCtrl',
+                controller: 'PresentationController',
                 resolve: {
                     loggedin: checkLoggedin
                 }
             })
             .when('/create', {
                 templateUrl: 'partials/create.html',
-                controller: 'PresentationCtrl',
+                controller: 'PresentationController',
                 resolve: {
                     loggedin: checkLoggedin
                 }
             })
             .when('/file',{
                 templateUrl: 'partials/file-upload.html',
-                controller: 'PhotoUploadCtrl'
+                controller: 'PhotoUploadController'
             })
             .otherwise({
               redirectTo: '/'
