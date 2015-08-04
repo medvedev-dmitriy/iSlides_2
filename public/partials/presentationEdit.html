@@ -41,7 +41,7 @@
             </form>
         </div>
     </div>
-    <div class="row">
+    <div class="row workArea">
         <div class="col-lg-2 col-md-2">
             <ul class="list-group">
                 <li class="list-group-item">
@@ -62,7 +62,8 @@
                          dnd-resizable="true"
                          dnd-rotatable="true"
                          dnd-containment="slide">
-                        <textarea type="{{tool}}" ng-if="tool === 'text'"/>
+                        <!--<textarea type="{{tool}}" ng-if="tool === 'text'" ng-click="show=true" ng-model="text" ng-hide="show"/>-->
+                        <!--<div ng-show="show">{{text}}</div>-->
                         <iframe dnd-draggable="true"
                                 dnd-resizable="true"
                                 dnd-rotatable="true"

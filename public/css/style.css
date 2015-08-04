@@ -9,14 +9,14 @@
 .slide {
     width: 640px;
     height: 480px;
-    margin: 0 auto;
+    margin: 15px auto;
     background-color: yellow;
     z-index: -10;
 }
 
 .tools {
     width: auto;
-    height: 110px;
+    height: 50px;
     border: solid gray 1px;
 }
 
@@ -31,7 +31,7 @@
 
 .slideTools{
     position: absolute;
-    margin: 0;
+    margin: 15px;
     text-align: center;
     vertical-align: middle;
 }
@@ -80,4 +80,8 @@
     display: block;
     width: 100%;
     height: 100%;
+}
+
+.form_line > div {
+    margin-top: 5px;
 }

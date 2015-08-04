@@ -13,7 +13,7 @@ iSlidesApp.controller('PresentationCtrl',[
 
         $scope.tools = PresentationService.tools;
         $scope.slideTools = [];
-
+        $scope.show = false;
         $scope.addToSlide = function(tool){
             if(tool === 'Video') {
                 var url = prompt('url?');
@@ -22,7 +22,6 @@ iSlidesApp.controller('PresentationCtrl',[
                 return;
             }
             $scope.slideTools.push(tool.toLowerCase());
-            console.log(slideTools);
         };
 
         $scope.addImage = function(url){

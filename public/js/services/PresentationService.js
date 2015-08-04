@@ -8,13 +8,13 @@ iSlidesApp.factory('PresentationService',[
 
         PresentationService.presentations = [];
 
-        PresentationService.tools = ['Text','Rectangle','Video','Circle'];
-
         PresentationService.create = function(presentation){
             var index = PresentationService.presentations.length;
             PresentationService.presentations.push(presentation);
             return $location.path('/presentation/edit/' + index);
         };
+
+        PresentationService.tools = ['Text','Video','Circle','Rectangle'];
 
         return PresentationService;
     }
