@@ -70,12 +70,11 @@
                          data-context-event="contextmenu"
                          data-context-menu="/partials/context-menu.html"
                          ng-show="tool.show">
-                        <textarea data-context-event="contextmenu"
-                                  data-context-menu="/partials/context.html"
-                                  type="{{tool.name}}" ng-if="tool.name === 'text'" ng-click="show=true" ng-model="text" ng-hide="show"/>
-                        <div data-context-event="contextmenu"
-                             data-context-menu="/partials/context.html"
-                             ng-show="show" style="font-size: {{tool.size}}">{{text}}</div>
+                        <textarea ng-model="text.me" type="text" ng-if="tool.name === 'text'"  ng-hide="show">
+                            <div ng-if="tool.name === 'text'" ng-show="show" style="font-size: {{tool.size}}">{{text.me}} fdf</div>
+                            {{text.me}}
+                        </textarea>
+                        <button class="btn btn-success" ng-click="show=!show">ok</button>
                         <iframe dnd-draggable="true"
                                 dnd-resizable="true"
                                 dnd-rotatable="true"
