@@ -1,0 +1,14 @@
+<ul>
+    <li>
+        <select name="font.name" class="form-control" ng-model="font.name">
+            <option ng-repeat="name in font.names" value="{{name}}">{{name}}</option>
+        </select>
+    </li>
+    <li>
+        <select name="font.color" class="form-control" ng-model="font.size" title='Choose color'>
+            <option ng-repeat="size in font.size" value="{{size}}">{{size}}</option>
+        </select>
+    </li>
+    <li ng-click="addText(font.name, font.size)" class="btn btn-success">Add</li>
+</ul>
+

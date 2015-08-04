@@ -16,6 +16,16 @@ iSlidesApp.factory('PresentationService',[
 
         PresentationService.tools = ['Text','Video','Circle','Rectangle'];
 
+        PresentationService.figures = {
+            names:['Circle','Rectangle'],
+            colors:['red','green','blue']
+        };
+
+        PresentationService.font = {
+            names:['Arial','Times New Roman', 'Minion','Comic Sans'],
+            size: [8, 12, 14, 24, 32]
+        };
+
         return PresentationService;
     }
 ]);

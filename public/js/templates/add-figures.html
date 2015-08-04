@@ -1,0 +1,14 @@
+<ul>
+    <li>
+        <select name="figure.name" class="form-control" ng-model="figure.name" title='Choose figure'>
+            <option ng-repeat="figure in figures.names" value="{{figure}}">{{figure}}</option>
+        </select>
+    </li>
+    <li>
+        <select name="figure.color" class="form-control" ng-model="figure.id" title='Choose color'>
+            <option ng-repeat="figure in figures.colors" value="{{figure}}">{{figure}}</option>
+        </select>
+    </li>
+    <li ng-click="addFigure(figure.name, figure.id)" class="btn btn-success">Add</li>
+</ul>
+

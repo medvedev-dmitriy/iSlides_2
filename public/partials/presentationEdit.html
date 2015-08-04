@@ -26,17 +26,18 @@
 <div class="container-fluid" id="home" >
     <div class="row tools clearfix" >
         <div class="col-lg-4 col-md-4">
-            <ul>
-                <li ng-click="addToSlide(tool)" ng-repeat="tool in tools" class="btn btn-info">{{tool}}</li>
-            </ul>
+            <add-figures></add-figures>
         </div>
-        <div class="col-lg-6 col-md-6">
-
+        <div class="col-lg-1 col-md-1">
+            <upload-video></upload-video>
+        </div>
+        <div class="col-lg-5 col-md-5">
+            <add-text></add-text>
         </div>
         <div class="col-lg-2 col-md-2" ng-controller="PhotoUploadCtrl">
             <form>
                 <div class="form_line">
-                    <div class="btn btn-success" ng-file-select ng-multiple="true" title="upload" resetOnClick="true" ng-model="files">Upload Image</div>
+                    <upload-image></upload-image>
                 </div>
             </form>
         </div>
@@ -49,29 +50,40 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-8 col-md-8">
+        <div class="col-lg-8 col-md-8" ng-controller="DragController as drag">
                 <div class="slide"
                      dnd-model = "dropmodel"
                      dnd-container
                      dnd-droppable = "true">
-                    <div ng-class="tool"
+                    <div ng-class="tool.name"
                          class="slideTools"
-                         style = "position: absolute; top: 0;left: 270px;"
+                         style = "position: absolute; top: 0;left: 270px; background: {{tool.color}}"
                          ng-repeat="tool in slideTools track by $index"
                          dnd-draggable="true"
                          dnd-resizable="true"
                          dnd-rotatable="true"
-                         dnd-containment="slide">
-                        <!--<textarea type="{{tool}}" ng-if="tool === 'text'" ng-click="show=true" ng-model="text" ng-hide="show"/>-->
-                        <!--<div ng-show="show">{{text}}</div>-->
+                         dnd-containment="slide"
+                         dnd-on-resizestart = "drag.dragstart()"
+                         dnd-on-resize = "drag.drag()"
+                         dnd-on-resizeend = "drag.dragend()"
+                         dnd-rect = "drag.rect"
+                         data-context-event="contextmenu"
+                         data-context-menu="/partials/context-menu.html"
+                         ng-show="tool.show">
+                        <textarea data-context-event="contextmenu"
+                                  data-context-menu="/partials/context.html"
+                                  type="{{tool.name}}" ng-if="tool.name === 'text'" ng-click="show=true" ng-model="text" ng-hide="show"/>
+                        <div data-context-event="contextmenu"
+                             data-context-menu="/partials/context.html"
+                             ng-show="show" style="font-size: {{tool.size}}">{{text}}</div>
                         <iframe dnd-draggable="true"
                                 dnd-resizable="true"
                                 dnd-rotatable="true"
                                 dnd-containment="slide"
-                                ng-if="tool.name == 'Video'"
-                                width="560" height="315"
+                                ng-if="tool.name == 'video'"
+                                width="{{drag.rect.width}}" height="{{drag.rect.height}}"
                                 ng-src="{{tool.url}}"
-                                frameborder="0"
+                                frameborder="1"
                                 allowfullscreen>
                         </iframe>
                         <cl-image public-id="{{tool.url}}"
@@ -84,10 +96,8 @@
         </div>
         <div class="col-lg-2 col-md-2">
             <div class="slider clearfix" ng-controller="PhotoUploadCtrl">
-                <!--ng-repeat="photo in photos"-->
                 <p ng-if="photos.length === 0 || !photos">No photos were added yet.</p>
                 <div class="slide-item" ng-repeat="photo in photos" ng-hide="delete">
-                    <!--<img src="/img/slide.jpg" class="image" alt="slide"/>-->
                     <div>
                         <cl-image public-id="{{photo.public_id}}" class="image"  height="100" crop="fit" quality="80" format="jpg"/>
                     </div>

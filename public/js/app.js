@@ -1,6 +1,12 @@
 'use strict';
 
-var iSlidesApp = angular.module('iSlidesApp', ['ngRoute','dnd','cloudinary','angularFileUpload']);
+var iSlidesApp = angular.module('iSlidesApp', [
+    'ngRoute',
+    'dnd',
+    'cloudinary',
+    'angularFileUpload',
+    'ngContextMenu'
+]);
 
 iSlidesApp.config(['$routeProvider',
         function ($routeProvider) {
