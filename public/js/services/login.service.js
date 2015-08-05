@@ -1,20 +1,25 @@
-iSlidesApp.factory('LoginService',[
-    '$http',
-    '$location',
-    function($http, $location){
-        var loginService = {};
-        loginService.login = function(user, success, err) {
-            $http.post('/login', user)
-                .success(success)
-                .error(err)
-        };
+;(function() {
+    'use strict';
 
-        loginService.logout = function(){
-            $http.get('/logout');
-            $location.path('/');
-        };
+    angular.module('iSlidesApp')
+        .factory('LoginService', [
+            '$http',
+            '$location',
+            function ($http, $location) {
+                var loginService = {};
+                loginService.login = function (user, success, err) {
+                    $http.post('/login', user)
+                        .success(success)
+                        .error(err)
+                };
 
-        return loginService;
-    }
+                loginService.logout = function () {
+                    $http.get('/logout');
+                    $location.path('/');
+                };
 
-]);
+                return loginService;
+            }
+
+        ])
+})();
