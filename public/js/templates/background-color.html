@@ -1,0 +1,31 @@
+<!--<select name="figure.color" class="form-control" ng-model="slide.color" ng-change="changeBackgroundColor(slide.color)">-->
+    <!--<option ng-repeat="figure in figures.colors" value="{{figure}}">{{figure}}</option>-->
+<!--</select>-->
+<button class="btn btn-success upload-video" data-toggle="modal" data-target="#colorModal">
+    Bg-Color
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="colorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Choose background color</h4>
+            </div>
+            <div class="modal-body">
+                <div class="rectangle"
+                     ng-model="slide.color"
+                     ng-repeat="figure in figures.colors"
+                     style="background: {{figure}}"
+                     ng-class="{ 'selected-class': $index == selectedIndex }"
+                     ng-click="itemClicked($index)">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="changeBackgroundColor(selectedIndex)" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

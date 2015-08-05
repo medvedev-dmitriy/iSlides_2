@@ -21,6 +21,21 @@
         $scope.slideTools = [];
         $scope.show = false;
 
+        $scope.slidebg = {
+            color: 'red'
+        };
+
+        $scope.selectedIndex = 0;
+
+        $scope.itemClicked = function ($index) {
+            console.log($index);
+            $scope.selectedIndex = $index;
+        };
+
+        $scope.changeBackgroundColor = function(index){
+            $scope.slidebg.color = PresentationService.figures.colors[index];
+        };
+
         $scope.deleteItem = function (index) {
             console.log(index);
             $scope.slideTools[index].show = false;
