@@ -26,10 +26,9 @@
                 frameborder="1"
                 allowfullscreen>
         </iframe >
-        <cl-image public-id="{{tool.url}}"
-                  ng-if="tool.name == 'image'"
-                  ng-class="slideImage"
-                  height="100"
-                  crop="fit" quality="80" format="jpg"/>
+        <img ng-if="tool.name == 'image'"
+             height="100%" width="100%"
+             ng-src="{{tool.url}}"
+             ng-class="slideImage"/>
     </div>
 </div>

@@ -25,7 +25,7 @@
 
 <div class="container-fluid" id="home" >
     <div class="row tools clearfix" >
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-4 col-md-4">
             <add-figures></add-figures>
         </div>
         <div class="col-lg-1 col-md-1">
@@ -45,13 +45,9 @@
             </form>
         </div>
     </div>
-    <div class="row workArea">
+    <div class="row">
         <div class="col-lg-2 col-md-2">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <img src="/img/slide.jpg" alt="slide"/>
-                </li>
-            </ul>
+            <slide-preview></slide-preview>
         </div>
         <div class="col-lg-8 col-md-8" ng-controller="DragController as drag">
                 <slide-items></slide-items>
@@ -64,7 +60,7 @@
                         <cl-image public-id="{{photo.public_id}}" class="image"  height="100" crop="fit" quality="80" format="jpg"/>
                     </div>
                     <div class="buttons">
-                        <a class="btn btn-success" ng-click="addImage(photo.public_id)">Add </a>
+                        <a class="btn btn-success" ng-click="addImage(photo.secure_url)">Add </a>
                         <a class="btn btn-danger"  ng-click="delete=true">Delete</a>
                     </div>
                 </div>

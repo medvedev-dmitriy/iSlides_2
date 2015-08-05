@@ -20,7 +20,7 @@
 
                 PresentationService.figures = {
                     names: ['Circle', 'Rectangle'],
-                    colors: ['red', 'green', 'blue']
+                    colors: ['yellow','red', 'green', 'blue']
                 };
 
                 PresentationService.font = {

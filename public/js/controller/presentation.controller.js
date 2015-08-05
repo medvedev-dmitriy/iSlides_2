@@ -22,7 +22,7 @@
         $scope.show = false;
 
         $scope.slidebg = {
-            color: 'red'
+            color: 'yellow'
         };
 
         $scope.selectedIndex = 0;
