@@ -1,34 +1,30 @@
 <div class="slide" dnd-model = "dropmodel" dnd-container dnd-droppable = "true" style="background: {{slidebg.color}}">
     <div ng-class="tool.name"
+         ng-controller="AttrsController"
          class="slideTools"
-         style = "position: absolute; top: 0;left: 270px; background: {{tool.color}}"
-         ng-repeat="tool in slideTools track by $index"
+         style = "background: {{tool.color}}; {{tool.style}}"
+         ng-repeat="tool in slides[selectedSlide] track by $index"
          dnd-draggable="true"
          dnd-resizable="true"
          dnd-rotatable="true"
          dnd-containment="slide"
-         dnd-on-resizestart = "drag.dragstart()"
-         dnd-on-resize = "drag.drag()"
-         dnd-on-resizeend = "drag.dragend()"
          dnd-rect = "dnd.rect"
          data-context-event="contextmenu"
          data-context-menu="/partials/context-menu.html"
-         ng-show="tool.show">
-        <textarea ng-model="text.me" type="text" ng-if="tool.name === 'text'"  ng-hide="show">
-            <div ng-if="tool.name === 'text'" ng-show="show" style="font-size: {{tool.size}}">{{text.me}} fdf</div>
-            {{text.me}}
-        </textarea>
-        <button ng-if="tool.name === 'text'" class="btn btn-success" ng-click="show=!show">ok</button>
-        <iframe
-                ng-if="tool.name == 'video'"
+         ng-show="tool.show"
+         ng-click="getStyle($index)">
+
+        <div ng-if="tool.name === 'text'" editable-text="text"
+             style="font-size: {{tool.size}}px; font-family: {{tool.font}};">
+            <p>{{ text || 'empty' }}</p>
+        </div>
+        <iframe ng-if="tool.name == 'video'"
                 width="{{dnd.rect.width}}" height="{{dnd.rect.height}}"
                 ng-src="{{tool.url}}"
                 frameborder="1"
                 allowfullscreen>
         </iframe >
-        <img ng-if="tool.name == 'image'"
-             height="100%" width="100%"
-             ng-src="{{tool.url}}"
-             ng-class="slideImage"/>
+        <img ng-if="tool.name == 'image'" height="100%" width="100%" ng-src="{{tool.url}}" ng-class="slideImage"/>
+
     </div>
 </div>

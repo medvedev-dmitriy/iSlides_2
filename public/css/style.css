@@ -33,6 +33,8 @@
 .slideTools{
     position: absolute;
     margin: 15px;
+    top: 0;
+    left: 160px;
     text-align: center;
     vertical-align: middle;
 }
@@ -137,4 +139,8 @@ ul.menu li:hover a {
 .selected-class {
     padding: 10px;
     border: dashed 12px black;
+}
+
+.slideTools:hover {
+    border: solid black 1px;
 }

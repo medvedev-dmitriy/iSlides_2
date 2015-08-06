@@ -1,5 +1,9 @@
 <ul class="list-group">
-    <li class="list-group-item">
-        <img src="/img/slide.jpg" alt="slide"/>
+    <li class="list-group-item" ng-repeat="silde in slides track by $index">
+        <img src="/img/slide.jpg" alt="slide" ng-click="changeSlide($index)"/>
+        <div class="btn btn-danger" ng-click="deleteSlide($index)">Delete</div>
+    </li>
+    <li class="list-group-item" ng-click="addSlide()">
+        <div class="btn btn-warning">Add new slide</div>
     </li>
 </ul>

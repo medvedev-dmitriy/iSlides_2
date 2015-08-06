@@ -7,7 +7,9 @@
         'dnd',
         'cloudinary',
         'angularFileUpload',
-        'ngContextMenu'
+        'ngContextMenu',
+        'mouse.utils',
+        'xeditable'
     ]);
 })();
     

@@ -1,5 +1,6 @@
 ;(function() {
     'use strict';
+
     angular.module('iSlidesApp')
         .controller('PresentationController', PresentationController);
 
@@ -11,15 +12,41 @@
         'LoginService',
         'PresentationService',
         '$routeParams',
-        '$sce'];
+        '$sce'
+       ];
 
-    function PresentationController($scope, $http, $location, HomeService, LoginService, PresentationService, $routeParams, $sce) {
+    function PresentationController($scope, $http, $location, HomeService, LoginService, PresentationService,
+                                    $routeParams, $sce) {
 
         $scope.tools = PresentationService.tools;
         $scope.figures = PresentationService.figures;
         $scope.font = PresentationService.font;
-        $scope.slideTools = [];
-        $scope.show = false;
+        $scope.slides = [];
+        var slideTools = [];
+        $scope.slides.push(slideTools);
+        $scope.selectedSlide = 0;
+
+        $scope.$on('style', function (event, data) {
+            console.log(data);
+        });
+
+        $scope.addSlide = function (){
+            $scope.selectedSlide++;
+            slideTools = [];
+            $scope.slides.push(slideTools);
+        };
+
+        $scope.changeSlide = function($index){
+            $scope.selectedSlide = $index;
+            slideTools = $scope.slides[$index];
+        };
+
+        $scope.deleteSlide = function ($index){
+            $scope.selectedSlide = 0;
+            slideTools = $scope.slides[0];
+            $scope.slides.splice($index, 1);
+            console.log($scope.slides);
+        };
 
         $scope.slidebg = {
             color: 'yellow'
@@ -28,7 +55,6 @@
         $scope.selectedIndex = 0;
 
         $scope.itemClicked = function ($index) {
-            console.log($index);
             $scope.selectedIndex = $index;
         };
 
@@ -38,36 +64,35 @@
 
         $scope.deleteItem = function (index) {
             console.log(index);
-            $scope.slideTools[index].show = false;
-            console.log(index);
+            slideTools.splice(index,1);
+            console.log('slideTools');
+            console.log(slideTools);
+            console.log('$scope.slides');
+            console.log($scope.slides);
         };
 
         $scope.addFigure = function (name, color) {
-            $scope.slideTools.push({name: name.toLowerCase(), color: color, show: true});
+            slideTools.push({name: name.toLowerCase(), color: color});
+            console.log('slideTools');
+            console.log(slideTools);
+            console.log('$scope.slides');
+            console.log($scope.slides);
         };
 
         $scope.addVideo = function (url) {
             if (url === undefined || url === null) return;
-            $scope.slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url), show: true});
+            slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url)});
+
         };
 
         $scope.addText = function (font, size) {
-            $scope.slideTools.push({name: 'text', font: font, size: parseInt(size), show: true});
-        };
-
-        $scope.addToSlide = function (tool) {
-            if (tool === 'Video') {
-                var url = prompt('url?');
-                $scope.slideTools.push({name: tool, url: $sce.trustAsResourceUrl(url)});
-                console.log($scope.slideTools);
-                return;
-            }
-            $scope.slideTools.push(tool.toLowerCase());
+            slideTools.push({name: 'text', font: font, size: parseInt(size)});
         };
 
         $scope.addImage = function (url) {
-            $scope.slideTools.push({name: 'image', url: $sce.trustAsResourceUrl(url), show: true});
+            slideTools.push({name: 'image', url: $sce.trustAsResourceUrl(url)});
         };
+
         $scope.logout = function () {
             return LoginService.logout();
         };
