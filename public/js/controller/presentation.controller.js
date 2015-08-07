@@ -27,7 +27,6 @@
         $scope.selectedSlide = 0;
 
         $scope.$on('style', function (event, data) {
-            console.log(data);
             slideTools[data.index].style = data.style;
         });
 
@@ -66,6 +65,28 @@
         $scope.deleteItem = function (index) {
             slideTools.splice(index,1);
         };
+
+        $scope.up = function (index) {
+            if(index === undefined || index === null) return;
+            var tmp = slideTools[index];
+            slideTools[index] = slideTools[index + 1];
+            slideTools[index + 1] = tmp;
+        };
+
+        $scope.down = function (index) {
+            slideTools.splice(index,1);
+        };
+
+        $scope.toBackground = function (index) {
+            slideTools.unshift(slideTools[index]);
+            slideTools.splice(index+1,1);
+        };
+
+        $scope.toForeground = function (index) {
+            slideTools.push(slideTools[index]);
+            slideTools.splice(index,1);
+        };
+
 
         $scope.addFigure = function (name, color) {
             slideTools.push({name: name.toLowerCase(), color: color, style: ''});
