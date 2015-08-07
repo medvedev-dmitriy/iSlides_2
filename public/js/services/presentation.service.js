@@ -10,9 +10,26 @@
 
                 PresentationService.presentations = [];
 
-                PresentationService.create = function (presentation) {
+                var loadPresentation = function(){
+                    $http.post('/presentations',$rootScope.user)
+                        .success(console.log('success'))
+                        .error(console.log('error'));
+                };
+
+                PresentationService.save = function(slides, user, index){
+                    $http.post('/presentationUpdate', { presentation:{ context: JSON.stringify(slides), user: user, presid: index }})
+                        .success(console.log('success http save'))
+                        .error(console.log('error http save'));
+                };
+
+                PresentationService.create = function (presentation,username) {
                     var index = PresentationService.presentations.length;
                     PresentationService.presentations.push(presentation);
+                    presentation.username = username;
+                    presentation.presid = index;
+                    $http.post('/presentation', { presentation: presentation })
+                        .success(console.log('success http save'))
+                        .error(console.log('error http save'));
                     return $location.path('/presentation/edit/' + index);
                 };
 

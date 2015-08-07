@@ -26,10 +26,11 @@
 
 <div class="container-fluid" id="home">
     <h1>Home</h1>
-    <div class="row" ng-repeat="presentation in presentations">
+    <div class="btn btn-success" ng-click="loadPresentation(user.username)">fdjf</div>
+    <div class="row" ng-repeat="presentation in presentations track by $index">
         <div class="col-md-4">
-            <h2>{{presentation.name}}</h2>
-            <p><a class="btn btn-default" href="#/presentation/edit/1" role="button">{{presentation.tags}} &raquo;</a></p>
+            <h2>{{presentation.presentation_name}}</h2>
+            <p><a class="btn btn-default" href="#/presentation/edit/{{$index}}" role="button">{{presentation.presentation_tags}} &raquo;</a></p>
         </div>
     </div>
 </div>

@@ -6,5 +6,6 @@ module.exports = {
         'password': ''
     },
 	'database': 'iSlides',
-    'users_table': 'users'
+    'users_table': 'users',
+    'presentation_table': 'presentations'
 };

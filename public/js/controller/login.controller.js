@@ -22,6 +22,12 @@
         $scope.signup = function () {
             return $location.path('/signup');
         };
+
+        $scope.loadPresentation = function(){
+            $http.post('/presentations',$rootScope.user)
+                .success(console.log('success'))
+                .error(console.log('error'));
+        };
     }
 })();
 

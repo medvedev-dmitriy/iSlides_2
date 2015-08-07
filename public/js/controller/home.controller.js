@@ -19,6 +19,15 @@
 
         $scope.createPresentation = function () {
             $location.path('/create');
-        }
+        };
+
+        $scope.loadPresentation = function(user){
+            $http.get('/presentations', { params: { user: user }})
+                .success(function(data){
+                    PresentationService.presentations = data;
+                    $scope.presentations = PresentationService.presentations;
+                })
+                .error(console.log('presentation not found!'));
+        };
     }
 })();

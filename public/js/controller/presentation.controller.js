@@ -110,8 +110,12 @@
             return LoginService.logout();
         };
 
-        $scope.create = function () {
-            return PresentationService.create($scope.newPresentation);
+        $scope.create = function (username) {
+            return PresentationService.create($scope.newPresentation,username);
+        };
+
+        $scope.save = function (username) {
+            return PresentationService.save($scope.slides,username,$routeParams.index);
         };
 
         $scope.presentation = function () {

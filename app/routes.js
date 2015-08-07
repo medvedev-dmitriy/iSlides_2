@@ -37,6 +37,7 @@ module.exports = function(app, passport) {
     app.get('/isloggedin', function(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     });
+
 };
 
 function isLoggedIn(req, res, next) {
