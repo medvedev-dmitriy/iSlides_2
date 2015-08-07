@@ -28,6 +28,7 @@
 
         $scope.$on('style', function (event, data) {
             console.log(data);
+            slideTools[data.index].style = data.style;
         });
 
         $scope.addSlide = function (){
@@ -63,34 +64,25 @@
         };
 
         $scope.deleteItem = function (index) {
-            console.log(index);
             slideTools.splice(index,1);
-            console.log('slideTools');
-            console.log(slideTools);
-            console.log('$scope.slides');
-            console.log($scope.slides);
         };
 
         $scope.addFigure = function (name, color) {
-            slideTools.push({name: name.toLowerCase(), color: color});
-            console.log('slideTools');
-            console.log(slideTools);
-            console.log('$scope.slides');
-            console.log($scope.slides);
+            slideTools.push({name: name.toLowerCase(), color: color, style: ''});
         };
 
         $scope.addVideo = function (url) {
             if (url === undefined || url === null) return;
-            slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url)});
+            slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url), style: ''});
 
         };
 
         $scope.addText = function (font, size) {
-            slideTools.push({name: 'text', font: font, size: parseInt(size)});
+            slideTools.push({name: 'text', font: font, size: parseInt(size), style: ''});
         };
 
         $scope.addImage = function (url) {
-            slideTools.push({name: 'image', url: $sce.trustAsResourceUrl(url)});
+            slideTools.push({name: 'image', url: $sce.trustAsResourceUrl(url), style: ''});
         };
 
         $scope.logout = function () {

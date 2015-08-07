@@ -10,7 +10,10 @@
         var AttrsService = {};
 
         AttrsService.getStyle = function(index, $attrs){
-            return $attrs.$$element[0].attributes[3].value;
+            return {
+                index: index,
+                style: $attrs.$$element[0].attributes[3].value
+            };
         };
 
         return AttrsService;

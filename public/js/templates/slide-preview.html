@@ -1,6 +1,28 @@
 <ul class="list-group">
     <li class="list-group-item" ng-repeat="silde in slides track by $index">
-        <img src="/img/slide.jpg" alt="slide" ng-click="changeSlide($index)"/>
+        <div ng-click="changeSlide($index)" class="slide slidePreview" style="{{'background:' + slidebg.color}}">
+            <div ng-repeat="tool in slides[$index] track by $index"
+                 ng-class="tool.name"
+                 ng-controller="AttrsController"
+                 class="slideTools"
+                 style = "{{tool.style || 'background: ' + tool.color + ';'}}"
+                 dnd-rect = "dnd.rect"
+                 ng-click="getStyle($index)">
+
+                <div ng-if="tool.name === 'text'" editable-text="text"
+                     style="{{'font-size:' + tool.size + 'px; font-family:' + tool.font +';'}}">
+                    <p>{{ text || 'empty' }}</p>
+                </div>
+                <iframe ng-if="tool.name == 'video'"
+                        width="{{dnd.rect.width}}" height="{{dnd.rect.height}}"
+                        ng-src="{{tool.url}}"
+                        frameborder="1"
+                        allowfullscreen>
+                </iframe >
+                <img ng-if="tool.name == 'image'" height="100%" width="100%" ng-src="{{tool.url}}" ng-class="slideImage"/>
+
+            </div>
+        </div>
         <div class="btn btn-danger" ng-click="deleteSlide($index)">Delete</div>
     </li>
     <li class="list-group-item" ng-click="addSlide()">

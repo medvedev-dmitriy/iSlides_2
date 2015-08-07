@@ -1,8 +1,8 @@
-<div class="slide" dnd-model = "dropmodel" dnd-container dnd-droppable = "true" style="background: {{slidebg.color}}">
+<div class="slide" dnd-model = "dropmodel" dnd-container dnd-droppable = "true" style="{{'background:' + slidebg.color}}">
     <div ng-class="tool.name"
          ng-controller="AttrsController"
          class="slideTools"
-         style = "background: {{tool.color}}; {{tool.style}}"
+         style = "{{tool.style || 'background: ' + tool.color + ';'}}"
          ng-repeat="tool in slides[selectedSlide] track by $index"
          dnd-draggable="true"
          dnd-resizable="true"
@@ -11,11 +11,10 @@
          dnd-rect = "dnd.rect"
          data-context-event="contextmenu"
          data-context-menu="/partials/context-menu.html"
-         ng-show="tool.show"
          ng-click="getStyle($index)">
 
         <div ng-if="tool.name === 'text'" editable-text="text"
-             style="font-size: {{tool.size}}px; font-family: {{tool.font}};">
+             style="{{'font-size:' + tool.size + 'px; font-family:' + tool.font +';'}}">
             <p>{{ text || 'empty' }}</p>
         </div>
         <iframe ng-if="tool.name == 'video'"

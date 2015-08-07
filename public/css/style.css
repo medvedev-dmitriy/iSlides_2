@@ -9,7 +9,6 @@
 .slide {
     width: 640px;
     height: 480px;
-    margin: 15px auto;
     background-color: yellow;
     z-index: -10;
 }
@@ -34,7 +33,7 @@
     position: absolute;
     margin: 15px;
     top: 0;
-    left: 160px;
+    left: 130px;
     text-align: center;
     vertical-align: middle;
 }
@@ -144,3 +143,13 @@ ul.menu li:hover a {
 .slideTools:hover {
     border: solid black 1px;
 }
+
+.slidePreview {
+    margin: -190px 0 -180px -240px;
+    transform: scale(0.2,0.2);
+}
+
+.work-area {
+    margin: 15px 0 0;
+}
+
