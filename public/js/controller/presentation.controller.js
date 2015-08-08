@@ -23,6 +23,8 @@
         $scope.figures = PresentationService.figures;
         $scope.font = PresentationService.font;
         $scope.slidebg = { color: PresentationService.figures.colors[0] };
+        $scope.aspectRation = PresentationService.presentations[$routeParams.index].presentation_aspectratio;
+        console.log($scope.aspectRation);
 
         $scope.selectedSlide = 0;
         if( PresentationService.presentations[$routeParams.index].presentation_content != null &&

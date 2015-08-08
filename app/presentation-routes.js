@@ -41,14 +41,13 @@ module.exports = function(app) {
         var updateQuery = 'UPDATE presentations \
             SET presentation_content=? \
             WHERE username=? and presid=?';
-        console.log(presentation.context);
-        console.log(presentation);
         connection.query(updateQuery, [
                 presentation.context,
                 presentation.user,
                 presentation.presid
         ], function(err, rows){
             if (err) throw err;
+            else console.log('update ok');
         });
     });
 };

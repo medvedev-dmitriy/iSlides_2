@@ -77,7 +77,6 @@
     margin: auto;
 }
 
-
 .upload-video, .form_line {
     margin-top: 8px;
 }
@@ -127,7 +126,7 @@ ul.menu li:hover a {
 }
 
 .form-control {
-    padding: 0;
+    padding: 0 0 0 15px;
 }
 
 .selected-class {
@@ -148,3 +147,22 @@ ul.menu li:hover a {
     margin: 15px 0 0;
 }
 
+.slide4x3, .slidePreview4x3 {
+    width: 640px;
+    height: 480px;
+}
+
+.slide16x9 , .slidePreview16x9{
+    width: 800px;
+    height: 450px;
+}
+
+.slidePreview16x9 {
+    margin: -180px 0 -170px -329px;
+    transform: scale(0.2,0.2);
+}
+
+.slidePreview4x3 {
+    margin: -190px 0 -180px -249px;
+    transform: scale(0.2,0.2);
+}

@@ -1,4 +1,6 @@
-<div class="slide" dnd-model = "dropmodel" dnd-container dnd-droppable = "true" style="{{'background:' + slidebg.color}}">
+<div class="slide" ng-class="aspectRation == '4x3' ? 'slide4x3' : 'slide16x9'"
+     dnd-model = "dropmodel" dnd-container dnd-droppable = "true"
+     style="{{'background:' + slidebg.color}}">
     <div ng-class="tool.name"
          ng-controller="AttrsController"
          class="slideTools"

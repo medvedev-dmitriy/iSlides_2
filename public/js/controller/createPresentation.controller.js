@@ -6,13 +6,19 @@
 
     CreatePresentationController.$inject = [
         '$scope',
-        'PresentationService'
+        'PresentationService',
+        'LoginService'
     ];
 
-    function CreatePresentationController($scope,PresentationService){
+    function CreatePresentationController($scope, PresentationService, LoginService){
 
         $scope.create = function (username) {
             return PresentationService.create($scope.newPresentation,username);
+        };
+
+        $scope.logout = function () {
+            PresentationService.presentations = [];
+            return LoginService.logout();
         };
 
     }
