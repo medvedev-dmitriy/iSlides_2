@@ -12,6 +12,8 @@
 
     function HomeController($scope, $http, $location, HomeService, LoginService, PresentationService) {
         $scope.logout = function () {
+            $scope.presentations = [];
+            PresentationService.presentations = [];
             return LoginService.logout();
         };
 
@@ -24,10 +26,14 @@
         $scope.loadPresentation = function(user){
             $http.get('/presentations', { params: { user: user }})
                 .success(function(data){
+                    console.log(data);
                     PresentationService.presentations = data;
                     $scope.presentations = PresentationService.presentations;
                 })
-                .error(console.log('presentation not found!'));
+                .error(function(){
+                    PresentationService.presentations = [];
+                    $scope.presentations = PresentationService.presentations;
+                });
         };
     }
 })();

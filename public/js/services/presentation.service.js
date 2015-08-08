@@ -10,12 +10,6 @@
 
                 PresentationService.presentations = [];
 
-                var loadPresentation = function(){
-                    $http.post('/presentations',$rootScope.user)
-                        .success(console.log('success'))
-                        .error(console.log('error'));
-                };
-
                 PresentationService.save = function(slides, user, index){
                     $http.post('/presentationUpdate', { presentation:{ context: JSON.stringify(slides), user: user, presid: index }})
                         .success(console.log('success http save'))

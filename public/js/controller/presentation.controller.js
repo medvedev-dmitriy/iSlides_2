@@ -21,10 +21,11 @@
         $scope.tools = PresentationService.tools;
         $scope.figures = PresentationService.figures;
         $scope.font = PresentationService.font;
-        $scope.slides = [];
-        var slideTools = [];
-        $scope.slides.push(slideTools);
+        $scope.slides = JSON.parse(PresentationService.presentations[$routeParams.index].presentation_content);
+        console.log(PresentationService.presentations[$routeParams.index].presentation_content);
         $scope.selectedSlide = 0;
+        var slideTools = $scope.slides[$scope.selectedSlide];
+
 
         $scope.$on('style', function (event, data) {
             slideTools[data.index].style = data.style;
@@ -111,6 +112,8 @@
         };
 
         $scope.create = function (username) {
+            $scope.slides = [];
+            slideTools = [];
             return PresentationService.create($scope.newPresentation,username);
         };
 
