@@ -20,10 +20,10 @@
         </div>
         <iframe ng-if="tool.name == 'video'"
                 width="{{dnd.rect.width}}" height="{{dnd.rect.height}}"
-                ng-src="{{tool.url}}"
+                ng-src="{{videoUrlConversion(tool.url)}}"
                 frameborder="1"
                 allowfullscreen>
-        </iframe >
+        </iframe>
         <img ng-if="tool.name == 'image'" height="100%" width="100%" ng-src="{{tool.url}}" ng-click="getStyle($index)"/>
 
     </div>

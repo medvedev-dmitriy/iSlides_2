@@ -105,8 +105,11 @@
 
         $scope.addVideo = function (url) {
             if (url === undefined || url === null) return;
-            slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url), style: '',native_url: url});
-            console.log(typeof $sce.trustAsResourceUrl(url));
+            slideTools.push({name: 'video', url: url, style: ''});
+        };
+
+        $scope.videoUrlConversion = function (url) {
+            return $sce.trustAsResourceUrl(url);
         };
 
         $scope.addText = function (font, size) {
@@ -118,6 +121,7 @@
         };
 
         $scope.logout = function () {
+            PresentationService.presentations = [];
             return LoginService.logout();
         };
 
