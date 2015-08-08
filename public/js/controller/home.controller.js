@@ -35,5 +35,9 @@
                         $scope.presentations = PresentationService.presentations;
                     });
         };
+
+        $scope.deletePresentation = function(id){
+            return HomeService.deletePresentation(id);
+        }
     }
 })();

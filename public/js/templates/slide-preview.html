@@ -1,7 +1,7 @@
 <ul class="list-group">
     <li class="list-group-item" ng-repeat="silde in slides track by $index">
         <div ng-click="changeSlide($index)"
-             class="slide" ng-class="aspectRation == '4x3' ? 'slidePreview4x3' : 'slidePreview16x9'"
+             class="slide" ng-class="aspectRatio == '4x3' ? 'slidePreview4x3' : 'slidePreview16x9'"
              style="{{'background:' + slidebg.color}}">
             <div ng-repeat="tool in slides[$index] track by $index"
                  ng-class="tool.name"

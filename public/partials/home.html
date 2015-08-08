@@ -32,6 +32,8 @@
         <div class="col-md-4">
             <h2>{{presentation.presentation_name}}</h2>
             <h4>{{presentation.presid}}</h4>
+            <h4>{{presentation.id}}</h4>
+            <p><a class="btn btn-danger" role="button" ng-click="deletePresentation(presentation.id)">Delete</a></p>
             <p><a class="btn btn-default" href="#/presentation/edit/{{presentation.presid}}" role="button">{{presentation.presentation_tags}} &raquo;</a></p>
         </div>
     </div>

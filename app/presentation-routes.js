@@ -36,13 +36,26 @@ module.exports = function(app) {
 
     });
 
+    app.delete('/presentation', function(req,res){
+        var presentation = req.query.id;
+        console.log('delete presentation' + presentation);
+        var deleteQuery = 'DELETE FROM presentations \
+                           WHERE id = ? \
+                           LIMIT 1';
+        connection.query(deleteQuery,[presentation], function(err){
+            if (err) throw err;
+            else console.log('delete ok');
+        })
+    });
+
     app.post('/presentationUpdate',function (req, res){
         var presentation = req.body.presentation;
         var updateQuery = 'UPDATE presentations \
-            SET presentation_content=? \
+            SET presentation_content=? , presentation_background=? \
             WHERE username=? and presid=?';
         connection.query(updateQuery, [
                 presentation.context,
+                presentation.bgcolor,
                 presentation.user,
                 presentation.presid
         ], function(err, rows){
@@ -50,4 +63,6 @@ module.exports = function(app) {
             else console.log('update ok');
         });
     });
+
+
 };

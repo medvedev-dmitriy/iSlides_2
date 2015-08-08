@@ -27,6 +27,12 @@
                         .error(error);
                 };
 
+                HomeService.deletePresentation = function(id){
+                    $http.delete('/presentation',{params: {id: id}})
+                        .success()
+                        .error();
+                };
+
                 return HomeService;
             }
         ])
