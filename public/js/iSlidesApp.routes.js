@@ -50,7 +50,7 @@
                     })
                     .when('/create', {
                         templateUrl: 'partials/create.html',
-                        controller: 'PresentationController',
+                        controller: 'CreatePresentationController',
                         resolve: {
                             loggedin: checkLoggedin
                         }

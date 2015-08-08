@@ -15,20 +15,32 @@
         '$sce'
        ];
 
-    function PresentationController($scope, $http, $location, HomeService, LoginService, PresentationService,
-                                    $routeParams, $sce) {
+    function PresentationController(
+        $scope, $http, $location, HomeService,
+        LoginService, PresentationService, $routeParams, $sce) {
 
         $scope.tools = PresentationService.tools;
         $scope.figures = PresentationService.figures;
         $scope.font = PresentationService.font;
-        $scope.slides = JSON.parse(PresentationService.presentations[$routeParams.index].presentation_content);
-        console.log(PresentationService.presentations[$routeParams.index].presentation_content);
+        $scope.slidebg = { color: PresentationService.figures.colors[0] };
+
         $scope.selectedSlide = 0;
-        var slideTools = $scope.slides[$scope.selectedSlide];
+        if( PresentationService.presentations[$routeParams.index].presentation_content != null &&
+            PresentationService.presentations[$routeParams.index].presentation_content != undefined) {
+            console.log(PresentationService.presentations[$routeParams.index]);
+            $scope.slides = JSON.parse(PresentationService.presentations[$routeParams.index].presentation_content);
+            var slideTools = $scope.slides[$scope.selectedSlide];
+        }
+        else {
+            $scope.slides = [];
+            var slideTools = [];
+            $scope.slides.push(slideTools);
+        }
 
 
         $scope.$on('style', function (event, data) {
             slideTools[data.index].style = data.style;
+            console.log(slideTools[data.index]);
         });
 
         $scope.addSlide = function (){
@@ -49,9 +61,7 @@
             console.log($scope.slides);
         };
 
-        $scope.slidebg = {
-            color: 'yellow'
-        };
+
 
         $scope.selectedIndex = 0;
 
@@ -95,29 +105,24 @@
 
         $scope.addVideo = function (url) {
             if (url === undefined || url === null) return;
-            slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url), style: ''});
-
+            slideTools.push({name: 'video', url: $sce.trustAsResourceUrl(url), style: '',native_url: url});
+            console.log(typeof $sce.trustAsResourceUrl(url));
         };
 
         $scope.addText = function (font, size) {
-            slideTools.push({name: 'text', font: font, size: parseInt(size), style: ''});
+            slideTools.push({name: 'text', font: font, size: parseInt(size), style: '',value: ''});
         };
 
         $scope.addImage = function (url) {
-            slideTools.push({name: 'image', url: $sce.trustAsResourceUrl(url), style: ''});
+            slideTools.push({name: 'image', url: url, style: ''});
         };
 
         $scope.logout = function () {
             return LoginService.logout();
         };
 
-        $scope.create = function (username) {
-            $scope.slides = [];
-            slideTools = [];
-            return PresentationService.create($scope.newPresentation,username);
-        };
-
         $scope.save = function (username) {
+            console.log($scope.slides);
             return PresentationService.save($scope.slides,username,$routeParams.index);
         };
 

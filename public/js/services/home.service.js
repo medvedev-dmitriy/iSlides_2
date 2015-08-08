@@ -5,7 +5,8 @@
         .factory('HomeService', [
             '$http',
             '$location',
-            function ($http, $location) {
+            'PresentationService',
+            function ($http, $location, PresentationService) {
                 var HomeService = {};
 
                 HomeService.presentations = [];
@@ -18,6 +19,12 @@
                     presentation.number = HomeService.presentation.length;
                     HomeService.presentation.push(presentation);
                     return presentation;
+                };
+
+                HomeService.loadPresentation = function(user, success, error){
+                    $http.get('/presentations', { params: { user: user }})
+                        .success(success)
+                        .error(error);
                 };
 
                 return HomeService;

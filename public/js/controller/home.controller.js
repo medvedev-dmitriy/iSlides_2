@@ -24,16 +24,16 @@
         };
 
         $scope.loadPresentation = function(user){
-            $http.get('/presentations', { params: { user: user }})
-                .success(function(data){
-                    console.log(data);
-                    PresentationService.presentations = data;
-                    $scope.presentations = PresentationService.presentations;
-                })
-                .error(function(){
-                    PresentationService.presentations = [];
-                    $scope.presentations = PresentationService.presentations;
-                });
+            return HomeService.loadPresentation(user,
+                    function(data){
+                        console.log(data);
+                        PresentationService.presentations = data;
+                        $scope.presentations = PresentationService.presentations;
+                    },
+                    function(err){
+                        PresentationService.presentations = [];
+                        $scope.presentations = PresentationService.presentations;
+                    });
         };
     }
 })();

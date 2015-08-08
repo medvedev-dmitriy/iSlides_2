@@ -11,7 +11,13 @@
                 PresentationService.presentations = [];
 
                 PresentationService.save = function(slides, user, index){
-                    $http.post('/presentationUpdate', { presentation:{ context: JSON.stringify(slides), user: user, presid: index }})
+                    PresentationService.presentations[index] = slides;
+                    $http.post('/presentationUpdate', {
+                        presentation:{
+                            context: JSON.stringify(slides),
+                            user: user,
+                            presid: index }
+                    })
                         .success(console.log('success http save'))
                         .error(console.log('error http save'));
                 };

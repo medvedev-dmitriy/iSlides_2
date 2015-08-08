@@ -30,7 +30,9 @@ module.exports = function(app) {
             presentation.name,
             presentation.tags,
             presentation.aspectRatio,
-            presentation.presid]);
+            presentation.presid], function(err, rows){
+            if (err) throw err;
+        });
 
     });
 
@@ -40,10 +42,13 @@ module.exports = function(app) {
             SET presentation_content=? \
             WHERE username=? and presid=?';
         console.log(presentation.context);
+        console.log(presentation);
         connection.query(updateQuery, [
                 presentation.context,
                 presentation.user,
                 presentation.presid
-        ]);
+        ], function(err, rows){
+            if (err) throw err;
+        });
     });
 };

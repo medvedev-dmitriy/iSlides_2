@@ -77,11 +77,6 @@
     margin: auto;
 }
 
-.slideImage {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 
 .upload-video, .form_line {
     margin-top: 8px;
