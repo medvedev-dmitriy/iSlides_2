@@ -40,8 +40,9 @@
 
 
         $scope.$on('style', function (event, data) {
-            slideTools[data.index].style = data.style;
-            console.log(slideTools[data.index]);
+            $scope.slides[data.selectedSlide][data.index].style = data.style;
+            console.log(data);
+            console.log($scope.slides);
         });
 
         $scope.addSlide = function (){

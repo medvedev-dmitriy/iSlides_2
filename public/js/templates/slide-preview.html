@@ -1,15 +1,14 @@
 <ul class="list-group" dnd-container>
-    <li class="list-group-item" dnd-sortable ng-repeat="silde in slides track by $index">
+    <li class="list-group-item" dnd-sortable ng-repeat="slide in slides track by $index">
         <div ng-click="changeSlide($index)"
              class="slide" ng-class="aspectRatio == '4x3' ? 'slidePreview4x3' : 'slidePreview16x9'"
              style="{{'background:' + slidebg.color}}">
-            <div ng-repeat="tool in slides[$index] track by $index"
+            <div ng-repeat="tool in slide track by $index"
                  ng-class="tool.name"
                  ng-controller="AttrsController"
                  class="slideTools"
                  style = "{{tool.style || 'background: ' + tool.color + ';'}}"
-                 dnd-rect = "dnd.rect"
-                 ng-click="getStyle($index)">
+                 dnd-rect = "dnd.rect">
 
                 <div ng-if="tool.name === 'text'" editable-text="text"
                      style="{{'font-size:' + tool.size + 'px; font-family:' + tool.font +';'}}">

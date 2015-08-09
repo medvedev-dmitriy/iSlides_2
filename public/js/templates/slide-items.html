@@ -7,14 +7,13 @@
          style = "{{tool.style || 'background: ' + tool.color + ';'}}"
          ng-repeat="tool in slides[selectedSlide] track by $index"
          dnd-draggable="true"
-         dnd-on-dragend="getStyle($index)"
          dnd-resizable="true"
          dnd-rotatable="true"
          dnd-containment="slide"
          dnd-rect = "dnd.rect"
          data-context-event="contextmenu"
          data-context-menu="/partials/context-menu.html"
-         ng-click="getStyle($index)">
+         ng-click="getStyle($index,selectedSlide)">
 
         <div ng-if="tool.name === 'text'" editable-text="text"
              style="{{'font-size:' + tool.size + 'px; font-family:' + tool.font +';'}}">
