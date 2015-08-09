@@ -166,3 +166,8 @@ ul.menu li:hover a {
     margin: -190px 0 -180px -249px;
     transform: scale(0.2,0.2);
 }
+
+.isInFullScreen {
+    position: relative;
+    transform: scale(1.4,1.4);
+}

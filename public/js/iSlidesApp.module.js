@@ -10,7 +10,8 @@
         'ngContextMenu',
         'mouse.utils',
         'xeditable',
-        'ngAnimate'
+        'ngAnimate',
+        'FBAngular'
     ]);
 })();
     

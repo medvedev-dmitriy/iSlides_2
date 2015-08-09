@@ -40,6 +40,8 @@
 
 
         $scope.$on('style', function (event, data) {
+            console.log($scope.slides);
+            console.log(data);
             $scope.slides[data.selectedSlide][data.index].style = data.style;
             console.log(data);
             console.log($scope.slides);
@@ -51,8 +53,9 @@
             $scope.slides.push(slideTools);
         };
 
-        $scope.changeSlide = function($index){
+        $scope.changeSlide = function($index) {
             $scope.selectedSlide = $index;
+            console.log($scope.selectedSlide);
             slideTools = $scope.slides[$index];
         };
 
@@ -111,7 +114,7 @@
         };
 
         $scope.videoUrlConversion = function (url) {
-            return $sce.trustAsResourceUrl(url);
+            return PresentationService.videoUrlConversion(url);
         };
 
         $scope.addText = function (font, size) {
@@ -135,6 +138,10 @@
         $scope.presentation = function () {
             console.log($routeParams.index);
             console.log(PresentationService.presentations[$routeParams.index]);
-        }
+        };
+
+        $scope.show = function(){
+            return PresentationService.show($routeParams.index);
+        };
     };
 })();

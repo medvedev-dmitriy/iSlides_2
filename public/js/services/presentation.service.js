@@ -5,7 +5,8 @@
         .factory('PresentationService', [
             '$http',
             '$location',
-            function ($http, $location) {
+            '$sce',
+            function ($http, $location, $sce) {
                 var PresentationService = {};
 
                 PresentationService.presentations = [];
@@ -46,6 +47,15 @@
                 PresentationService.font = {
                     names: ['Arial', 'Times New Roman', 'Minion', 'Comic Sans'],
                     size: [8, 12, 14, 24, 32]
+                };
+
+                PresentationService.show = function(presid){
+                    console.log('show ' + presid);
+                    return $location.path('/show/' + presid);
+                };
+
+                PresentationService.videoUrlConversion = function (url) {
+                    return $sce.trustAsResourceUrl(url);
                 };
 
                 return PresentationService;

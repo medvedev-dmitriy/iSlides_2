@@ -12,7 +12,7 @@
         AttrsService.getStyle = function(index, $attrs, selectedSlide){
             return {
                 index: index,
-                style: $attrs.$$element[0].attributes[3].value,
+                style: $attrs.$$element[0].attributes[4].value,
                 selectedSlide: selectedSlide
             };
         };

@@ -58,6 +58,13 @@
                         templateUrl: 'partials/file-upload.html',
                         controller: 'PhotoUploadController'
                     })
+                    .when('/show/:presid',{
+                        templateUrl: 'partials/show.html',
+                        controller: 'ShowPresentationController',
+                        resolve: {
+                            loggedin: checkLoggedin
+                        }
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
