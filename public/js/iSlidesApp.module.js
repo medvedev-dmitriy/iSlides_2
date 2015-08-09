@@ -9,7 +9,8 @@
         'angularFileUpload',
         'ngContextMenu',
         'mouse.utils',
-        'xeditable'
+        'xeditable',
+        'ngAnimate'
     ]);
 })();
     

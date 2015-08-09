@@ -14,7 +14,6 @@
                                 deferred.resolve();
                             } else {
                                 deferred.reject();
-                                console.log("checkLog");
                                 $location.url('/');
                             }
                         })

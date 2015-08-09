@@ -24,17 +24,25 @@
     </nav>
 </header>
 
-<div class="container-fluid" id="home">
+<div class="container-fluid" id="home" ng-class="{'list' : layoutMode == 0}">
     <h1>Home</h1>
     <div class="btn btn-success" ng-click="loadPresentation(user.username)">fdjf</div>
+    <div class="btn btn-success" ng-click="toggle()">show</div>
+    <div class="btn btn-success" ng-click="show()">show</div>
+    <div class="btn btn-success" ng-click="cleanList()">cleanList</div>
     <p ng-if="presentations.length === 0 || !presentations">No presentations were added yet.</p>
-    <div class="row" ng-repeat="presentation in presentations track by $index">
+    <div class="row" ng-repeat="item in list track by $index" ng-show="isShow" ng-class="animation">
         <div class="col-md-4">
-            <h2>{{presentation.presentation_name}}</h2>
-            <h4>{{presentation.presid}}</h4>
-            <h4>{{presentation.id}}</h4>
+            <h2>name: {{item.presentation_name}}</h2>
+            <h4>presid: {{item.presid}}</h4>
+            <h4>id: {{presentation.id}}</h4>
+            <h4>AspectRatio: {{presentation.presentation_aspectratio}}</h4>
             <p><a class="btn btn-danger" role="button" ng-click="deletePresentation(presentation.id)">Delete</a></p>
-            <p><a class="btn btn-default" href="#/presentation/edit/{{presentation.presid}}" role="button">{{presentation.presentation_tags}} &raquo;</a></p>
+            <p>
+                <a class="btn btn-default" href="#/presentation/edit/{{presentation.presid}}" role="button">
+                    {{presentation.presentation_tags}} &raquo;
+                </a>
+            </p>
         </div>
     </div>
 </div>

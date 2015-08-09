@@ -6,11 +6,54 @@
         '$scope',
         '$http',
         '$location',
+        '$timeout',
         'HomeService',
         'LoginService',
         'PresentationService'];
 
-    function HomeController($scope, $http, $location, HomeService, LoginService, PresentationService) {
+    function HomeController($scope, $http, $location, $timeout, HomeService, LoginService, PresentationService) {
+        $scope.isShown = true;
+        $scope.toggle = function () {
+            $scope.animation = 'toggle';
+            for (var i = 0; i < $scope.presentations.length; i++) {
+                $timeout(function () {
+                    $scope.list.push($scope.presentations[i]);
+                }, 100 * i);
+            };
+        };
+        $scope.show = function (){
+            $scope.isShow = !$scope.isShow;
+        }
+        $scope.cleanList = function () {
+            for (var i = 0; i < $scope.list.length; i++) {
+                $timeout(function () {
+                    $scope.list.pop();
+                }, 100 * i);
+            };
+        };
+
+        $scope.list = [];
+        $scope.currentAnimation;
+        $scope.animations = ["toggle",
+            "spin-toggle",
+            "scale-fade",
+            "scale-fade-in",
+            "bouncy-scale-in",
+            "flip-in",
+            "slide-left",
+            "slide-right",
+            "slide-top",
+            "slide-down",
+            "bouncy-slide-left",
+            "bouncy-slide-right",
+            "bouncy-slide-top",
+            "bouncy-slide-down",
+            "rotate-in"];
+
+        $scope.addItem = function (animation) {
+
+        };
+
         $scope.logout = function () {
             $scope.presentations = [];
             PresentationService.presentations = [];
