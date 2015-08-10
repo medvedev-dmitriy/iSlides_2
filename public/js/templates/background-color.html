@@ -14,17 +14,20 @@
                 <h4 class="modal-title" id="myModalLabel">Choose background color</h4>
             </div>
             <div class="modal-body">
-                <div class="rectangle"
-                     ng-model="slide.color"
-                     ng-repeat="figure in figures.colors"
-                     style="background: {{figure}}"
-                     ng-class="{ 'selected-class': $index == selectedIndex }"
-                     ng-click="itemClicked($index)">
+                <div class="row">
+                    <!--<div class="rectangle"-->
+                         <!--ng-model="slide.color"-->
+                         <!--ng-repeat="figure in figures.colors"-->
+                         <!--style="background: {{figure}}"-->
+                         <!--ng-class="{ 'selected-class': $index == selectedIndex }"-->
+                         <!--ng-click="itemClicked($index)">-->
+                    <!--</div>-->
+                    <div class="colorwheel center-block" ng-colorwheel="{ size: 150, segments: 120 }" ng-model="color"> </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="changeBackgroundColor(selectedIndex)" data-dismiss="modal">Ok</button>
+                <button type="button" class="btn btn-primary" ng-click="changeBackgroundColor(color)" data-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>

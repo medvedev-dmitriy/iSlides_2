@@ -7,5 +7,6 @@ module.exports = {
     },
 	'database': 'iSlides',
     'users_table': 'users',
-    'presentation_table': 'presentations'
+    'presentation_table': 'presentations',
+    'images_table': 'images'
 };

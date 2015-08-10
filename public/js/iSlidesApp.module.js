@@ -11,7 +11,8 @@
         'mouse.utils',
         'xeditable',
         'ngAnimate',
-        'FBAngular'
+        'FBAngular',
+        'directive.ngColorwheel'
     ]);
 })();
     

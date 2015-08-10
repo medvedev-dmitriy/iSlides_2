@@ -74,8 +74,8 @@
             $scope.selectedIndex = $index;
         };
 
-        $scope.changeBackgroundColor = function(index){
-            $scope.slidebg.color = PresentationService.figures.colors[index];
+        $scope.changeBackgroundColor = function(color){
+            $scope.slidebg.color = color;
         };
 
         $scope.deleteItem = function (index) {

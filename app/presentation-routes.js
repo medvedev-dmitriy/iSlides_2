@@ -64,5 +64,33 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/images', function(req, res) {
+        console.log(req.query);
+        var username = req.query.user;
+        connection.query("SELECT * FROM images WHERE username = ?",[username], function(err, rows){
+            if (err)
+                return done(err);
+            if (!rows.length) {
+                return done(null, false, req.flash('imagesError', 'No images found.'));
+            }
+
+            res.send(rows);
+        });
+    });
+
+    app.post('/images', function(req, res){
+        console.log('save images');
+        console.log(req.body.presentation);
+        var presentation = req.body.presentation;
+        var insertQuery = "INSERT INTO images (username, images) VALUES(?, ?) ON DUPLICATE KEY UPDATE \
+                           username=VALUES(username), images=VALUES(images)";
+        connection.query(insertQuery,[
+            presentation.username,
+            presentation.images], function(err, rows){
+            if (err) throw err;
+        });
+
+    });
+
 
 };
