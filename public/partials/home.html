@@ -26,16 +26,15 @@
 
 <div class="container-fluid" id="home" ng-class="{'list' : layoutMode == 0}">
     <h1>Home</h1>
-    <div class="btn btn-success" ng-click="loadPresentation(user.username)">load</div>
+    <div ng-init="loadPresentation(user.username)"></div>
 
     <p ng-if="presentations.length === 0 || !presentations">No presentations were added yet.</p>
-    <div class="row scale-fade" ng-repeat="presentation in presentations track by $index">
-        <div class="col-md-4">
-            <h2>{{presentation.presentation_name}}</h2>
-            <h4>{{presentation.presid}}</h4>
-            <h4>{{presentation.id}}</h4>
+    <ul class="item-container scale-fade" ng-repeat="presentation in presentations track by $index">
+        <li class="item list">
+            <h2>Name: {{presentation.presentation_name}}</h2>
+            <h2>Aspect ratio: {{presentation.presentation_aspectratio}}</h2>
             <p><a class="btn btn-danger" role="button" ng-click="deletePresentation(presentation.id)">Delete</a></p>
-            <p><a class="btn btn-default" href="#/presentation/edit/{{presentation.presid}}" role="button">{{presentation.presentation_tags}} &raquo;</a></p>
-        </div>
-    </div>
+            <p><a class="btn btn-default" href="#/presentation/edit/{{presentation.presid}}" role="button">Edit &raquo;</a></p>
+        </li>
+    </ul>
 </div>

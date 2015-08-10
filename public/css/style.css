@@ -52,7 +52,7 @@
 }
 
 .video {
-    border: solid 1px red;
+    padding: 20px;
 }
 
 .slider {
@@ -169,9 +169,29 @@ ul.menu li:hover a {
 
 .show {
     margin: 60px 0 0;
-    transform: scale(1.2,1.2);
+    transform: scale(1,1);
 }
 
 .center {
     margin: 0 auto;
+}
+
+.item-container {
+    width: 100%;
+}
+
+.item-container .item {
+    background-color: #00BB87;
+    padding: 65px;
+    margin: 10px;
+    border-radius: 8px;
+    color: white;
+    float: left;
+}
+
+
+/* line 128, ../sass/style.scss */
+.item:hover {
+    cursor: pointer;
+    background-color: rgba(0, 187, 135, 0.9);
 }

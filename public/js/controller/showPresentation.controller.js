@@ -10,10 +10,11 @@
         '$http',
         'PresentationService',
         '$routeParams',
-        'Fullscreen'
+        'Fullscreen',
+        '$window'
     ];
 
-    function ShowPresentationController($scope, $location, $http, PresentationService, $routeParams,Fullscreen){
+    function ShowPresentationController($scope, $location, $http, PresentationService, $routeParams,Fullscreen, $window){
         $scope.selectedSlide = 0;
         $scope.tools = PresentationService.tools;
         $scope.figures = PresentationService.figures;
@@ -49,14 +50,11 @@
         $scope.goFullscreen = function () {
             if (Fullscreen.isEnabled()) {
                 Fullscreen.cancel();
-                $scope.isFullScreen = false;
             }
             else {
                 Fullscreen.all();
-                $scope.isFullScreen = true;
             }
         };
 
-        $scope.isFullScreen = false;
     }
 })();
