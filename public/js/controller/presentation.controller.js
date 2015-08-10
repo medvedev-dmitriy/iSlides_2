@@ -23,17 +23,20 @@
         $scope.tools = PresentationService.tools;
         $scope.figures = PresentationService.figures;
         $scope.font = PresentationService.font;
-        $scope.slidebg = { color: PresentationService.presentations[$routeParams.index].presentation_background || PresentationService.figures.colors[0] };
-        $scope.aspectRatio = PresentationService.presentations[$routeParams.index].presentation_aspectratio ||
-                             PresentationService.presentations[$routeParams.index].aspectRatio;
+        var presentations = PresentationService.presentations;
+        $scope.slidebg = {
+            color: presentations[$routeParams.index].presentation_background ||
+            PresentationService.figures.colors[0]
+        };
+        $scope.aspectRatio = presentations[$routeParams.index].presentation_aspectratio ||
+                             presentations[$routeParams.index].aspectRatio;
 
         $scope.animations = PresentationService.animations;
 
-        $scope.slideAnimation = [];
 
-        if( PresentationService.presentations[$routeParams.index].presentation_content != null &&
-            PresentationService.presentations[$routeParams.index].presentation_content != undefined) {
-            $scope.slides = JSON.parse(PresentationService.presentations[$routeParams.index].presentation_content);
+        if( presentations[$routeParams.index].presentation_content != null &&
+            presentations[$routeParams.index].presentation_content != undefined) {
+            $scope.slides = JSON.parse(presentations[$routeParams.index].presentation_content);
             var slideTools = $scope.slides[$scope.selectedSlide];
         }
         else {
@@ -41,6 +44,15 @@
             var slideTools = [];
             $scope.slides.push(slideTools);
         }
+
+        if(presentations[$routeParams.index].presentation_animation != null &&
+            presentations[$routeParams.index].presentation_animation != undefined &&
+            presentations[$routeParams.index].presentation_animation != "" ) {
+            $scope.slideAnimation = JSON.parse(presentations[$routeParams.index].presentation_animation);
+        }else{
+            $scope.slideAnimation = [];
+        }
+
 
 
         $scope.$on('style', function (event, data) {
@@ -131,7 +143,11 @@
         };
 
         $scope.save = function (username) {
-            return PresentationService.save($scope.slides,username, $routeParams.index, $scope.slidebg.color);
+            return PresentationService.save($scope.slides,
+                                            username,
+                                            $routeParams.index,
+                                            $scope.slidebg.color,
+                                            $scope.slideAnimation);
         };
 
         $scope.presentation = function () {
@@ -151,7 +167,7 @@
         };
 
         $scope.setSlideAnimation = function(animation){
-            console.log(animation);
+            console.log(animation + ' ' +$scope.selectedSlide);
             $scope.slideAnimation[$scope.selectedSlide] = animation;
             console.log($scope.slideAnimation);
         }

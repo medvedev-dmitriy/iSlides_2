@@ -24,7 +24,8 @@ module.exports = function(app) {
         console.log(req.body.presentation);
         var presentation = req.body.presentation;
         var insertQuery = "INSERT INTO presentations " +
-            "( username,presentation_name,presentation_tags,presentation_aspectratio,presid) values (?,?,?,?,?)";
+            "( username,presentation_name,presentation_tags,presentation_aspectratio,presid)" +
+            " values (?,?,?,?,?)";
         connection.query(insertQuery,[
             presentation.username,
             presentation.name,
@@ -51,11 +52,12 @@ module.exports = function(app) {
     app.post('/presentationUpdate',function (req, res){
         var presentation = req.body.presentation;
         var updateQuery = 'UPDATE presentations \
-            SET presentation_content=? , presentation_background=? \
+            SET presentation_content=? , presentation_background=? , presentation_animation=? \
             WHERE username=? and presid=?';
         connection.query(updateQuery, [
                 presentation.context,
                 presentation.bgcolor,
+                presentation.animates,
                 presentation.user,
                 presentation.presid
         ], function(err, rows){
@@ -69,9 +71,9 @@ module.exports = function(app) {
         var username = req.query.user;
         connection.query("SELECT * FROM images WHERE username = ?",[username], function(err, rows){
             if (err)
-                return done(err);
+                return err;
             if (!rows.length) {
-                return done(null, false, req.flash('imagesError', 'No images found.'));
+                return  req.flash('imagesError', 'No images found.');
             }
 
             res.send(rows);

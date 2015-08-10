@@ -7,8 +7,8 @@
     <div class="col-md-10 show">
     <div class="center"
          ng-repeat="slide in slides track by $index" ng-show="$index === selectedSlide"
-         ng-class="[aspectRatio == '4x3' ? 'slide4x3' : 'slide16x9',slideAnimation[$index] == undefined ? 'toggle' : slideAnimation[$index]]"
-            >
+         ng-class="[aspectRatio == '4x3' ? 'slide4x3' : 'slide16x9',
+                    slideAnimation[$index] == undefined ? 'toggle' : slideAnimation[$index]]">
         {{slideAnimation[$index]}}
         <div
              class="slide" ng-class="aspectRatio == '4x3' ? 'slide4x3' : 'slide16x9'"

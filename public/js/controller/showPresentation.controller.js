@@ -22,10 +22,15 @@
         $scope.slidebg = { color: PresentationService.presentations[$routeParams.presid].presentation_background ||
                            PresentationService.figures.colors[0] };
         $scope.aspectRatio = PresentationService.presentations[$routeParams.presid].presentation_aspectratio ||
-            PresentationService.presentations[$routeParams.presid].aspectRatio;
+                             PresentationService.presentations[$routeParams.presid].aspectRatio;
 
-        $scope.slideAnimation = PresentationService.presentation.slide_animation ||
-                                PresentationService.presentation.slideAnimation;
+        if(PresentationService.presentations[$routeParams.presid].presentation_animation != null &&
+            PresentationService.presentations[$routeParams.presid].presentation_animation != undefined &&
+            PresentationService.presentations[$routeParams.presid].presentation_animation != "" ) {
+            $scope.slideAnimation = JSON.parse(PresentationService.presentations[$routeParams.presid].presentation_animation);
+        }else{
+            $scope.slideAnimation = [];
+        }
 
         if( PresentationService.presentations[$routeParams.presid].presentation_content != null &&
             PresentationService.presentations[$routeParams.presid].presentation_content != undefined) {

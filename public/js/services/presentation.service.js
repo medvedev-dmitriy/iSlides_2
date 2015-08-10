@@ -28,14 +28,15 @@
                     "bouncy-slide-down",
                     "rotate-in"];
 
-                PresentationService.save = function(slides, user, index, color){
+                PresentationService.save = function(slides, user, index, color, slideAnimation){
                     PresentationService.presentations[index] = slides;
                     $http.post('/presentationUpdate', {
                         presentation:{
                             context: JSON.stringify(slides),
                             user: user,
                             presid: index ,
-                            bgcolor: color
+                            bgcolor: color,
+                            animates: JSON.stringify(slideAnimation)
                         }
                     })
                         .success(console.log('success http save'))

@@ -22,6 +22,7 @@
                         .error(error);
                     $http.get('/images',{params: {user: user}})
                         .success(function(data){
+                            console.log(data);
                             $rootScope.photos = JSON.parse(data[0].images);
                         })
                         .error();

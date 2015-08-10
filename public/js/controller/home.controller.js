@@ -27,6 +27,7 @@
             return HomeService.loadPresentation(user,
                     function(data){
                         PresentationService.presentations = data;
+                        console.log(PresentationService.presentations);
                         $scope.presentations = PresentationService.presentations;
                     },
                     function(err){
