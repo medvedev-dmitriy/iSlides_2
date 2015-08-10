@@ -24,6 +24,9 @@
         $scope.aspectRatio = PresentationService.presentations[$routeParams.presid].presentation_aspectratio ||
             PresentationService.presentations[$routeParams.presid].aspectRatio;
 
+        $scope.slideAnimation = PresentationService.presentation.slide_animation ||
+                                PresentationService.presentation.slideAnimation;
+
         if( PresentationService.presentations[$routeParams.presid].presentation_content != null &&
             PresentationService.presentations[$routeParams.presid].presentation_content != undefined) {
             $scope.slides = JSON.parse(PresentationService.presentations[$routeParams.presid].presentation_content);

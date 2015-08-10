@@ -1,5 +1,6 @@
 <ul class="list-group" dnd-container>
     <li class="list-group-item" dnd-sortable ng-repeat="slide in slides track by $index">
+        {{slideAnimation[$index]}}
         <div ng-click="changeSlide($index)"
              class="slide" ng-class="aspectRatio == '4x3' ? 'slidePreview4x3' : 'slidePreview16x9'"
              style="{{'background:' + slidebg.color}}">
@@ -21,10 +22,8 @@
                         allowfullscreen>
                 </iframe >
                 <img ng-if="tool.name == 'image'" height="100%" width="100%" ng-src="{{tool.url}}" ng-class="slideImage"/>
-
             </div>
         </div>
-        <div class="btn btn-danger" ng-click="deleteSlide($index)">Delete</div>
         <div class="btn btn-danger" ng-click="deleteSlide($index)">Delete</div>
     </li>
     <li class="list-group-item" ng-click="addSlide()">

@@ -12,6 +12,22 @@
 
                 PresentationService.presentations = [];
 
+                PresentationService.animations = ["toggle",
+                    "spin-toggle",
+                    "scale-fade",
+                    "scale-fade-in",
+                    "bouncy-scale-in",
+                    "flip-in",
+                    "slide-left",
+                    "slide-right",
+                    "slide-top",
+                    "slide-down",
+                    "bouncy-slide-left",
+                    "bouncy-slide-right",
+                    "bouncy-slide-top",
+                    "bouncy-slide-down",
+                    "rotate-in"];
+
                 PresentationService.save = function(slides, user, index, color){
                     PresentationService.presentations[index] = slides;
                     $http.post('/presentationUpdate', {

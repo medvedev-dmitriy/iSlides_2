@@ -26,8 +26,10 @@
         $scope.slidebg = { color: PresentationService.presentations[$routeParams.index].presentation_background || PresentationService.figures.colors[0] };
         $scope.aspectRatio = PresentationService.presentations[$routeParams.index].presentation_aspectratio ||
                              PresentationService.presentations[$routeParams.index].aspectRatio;
-        //$scope.slideAnimation = PresentationService.presentation[$routeParams.index].slide_animation ||
-        //                        PresentationService.presentation[$routeParams.index].slideAnimation;
+
+        $scope.animations = PresentationService.animations;
+
+        $scope.slideAnimation = [];
 
         if( PresentationService.presentations[$routeParams.index].presentation_content != null &&
             PresentationService.presentations[$routeParams.index].presentation_content != undefined) {
@@ -147,5 +149,11 @@
             else
                 Fullscreen.all();
         };
+
+        $scope.setSlideAnimation = function(animation){
+            console.log(animation);
+            $scope.slideAnimation[$scope.selectedSlide] = animation;
+            console.log($scope.slideAnimation);
+        }
     };
 })();

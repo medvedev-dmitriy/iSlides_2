@@ -1,4 +1,4 @@
-<div class="slide" ng-class="aspectRatio == '4x3' ? 'slide4x3' : 'slide16x9'"
+<div class="slide {{slideAnimation[selectedSlide]}}" ng-class="aspectRatio == '4x3' ? 'slide4x3' : 'slide16x9'"
      dnd-model = "dropmodel" dnd-container dnd-droppable = "true"
      style="{{'background:' + slidebg.color}}">
     <div ng-repeat="tool in slides[selectedSlide] track by $index"

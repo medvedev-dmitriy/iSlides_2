@@ -15,6 +15,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.presentation_table + '`( 
     `presentation_content` MEDIUMTEXT , \
     `presentation_aspectratio` CHAR(10) NOT NULL, \
     `presentation_background` CHAR(10) NOT NULL, \
+    `presentation_animation` CHAR(1000) NOT NULL, \
         PRIMARY KEY (`id`), \
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) \
 );');
