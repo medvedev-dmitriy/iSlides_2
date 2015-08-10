@@ -6,18 +6,13 @@
 
     PresentationController.$inject = [
         '$scope',
-        '$http',
-        '$location',
         'HomeService',
         'LoginService',
         'PresentationService',
-        '$routeParams',
-        '$sce'
+        '$routeParams'
        ];
 
-    function PresentationController(
-        $scope, $http, $location, HomeService,
-        LoginService, PresentationService, $routeParams, $sce) {
+    function PresentationController($scope, HomeService, LoginService, PresentationService, $routeParams) {
 
         $scope.selectedSlide = 0;
         $scope.tools = PresentationService.tools;
@@ -67,7 +62,6 @@
 
         $scope.changeSlide = function($index) {
             $scope.selectedSlide = $index;
-            console.log($scope.selectedSlide);
             slideTools = $scope.slides[$index];
         };
 
@@ -75,7 +69,6 @@
             $scope.selectedSlide = 0;
             slideTools = $scope.slides[0];
             $scope.slides.splice($index, 1);
-            console.log($scope.slides);
         };
 
 
@@ -102,7 +95,7 @@
         };
 
         $scope.down = function (index) {
-            if(index === undefined || index === null || index < 0) return;
+            if(index === undefined || index === null || index < 1) return;
             var tmp = slideTools[index];
             slideTools[index] = slideTools[index - 1];
             slideTools[index - 1] = tmp;
@@ -169,10 +162,22 @@
                 Fullscreen.all();
         };
 
+        $scope.loadPresentation = function(user){
+            return HomeService.loadPresentation(user,
+                function(data){
+                    PresentationService.presentations = data;
+                    $scope.presentations = PresentationService.presentations;
+                },
+                function(err){
+                    PresentationService.presentations = [];
+                    $scope.presentations = PresentationService.presentations;
+                });
+        };
+
         $scope.setSlideAnimation = function(animation){
             console.log(animation + ' ' +$scope.selectedSlide);
             $scope.slideAnimation[$scope.selectedSlide] = animation;
             console.log($scope.slideAnimation);
         }
-    };
+    }
 })();

@@ -4,9 +4,8 @@
     SignupController.$inject = [
         '$scope',
         '$location',
-        '$http',
         'SignupService'];
-    function SignupController($scope, $location, $http, SignupService) {
+    function SignupController($scope, $location, SignupService) {
         $scope.signin = function () {
             $location.path('/')
         };

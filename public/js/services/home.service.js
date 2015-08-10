@@ -25,7 +25,9 @@
                             console.log(data);
                             $rootScope.photos = JSON.parse(data[0].images);
                         })
-                        .error();
+                        .error(function(){
+                            $rootScope.photos = [];
+                        });
                 };
 
                 HomeService.deletePresentation = function(id,index){

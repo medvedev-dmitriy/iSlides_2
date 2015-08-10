@@ -2,9 +2,9 @@
     angular.module('iSlidesApp')
         .controller('PhotoUploadController', PhotoUploadController);
 
-    PhotoUploadController.$inject = ['$scope', '$rootScope', '$routeParams', '$location', '$upload'];
+    PhotoUploadController.$inject = ['$scope', '$rootScope', '$upload'];
 
-    function PhotoUploadController($scope, $rootScope, $routeParams, $location, $upload) {
+    function PhotoUploadController($scope, $rootScope, $upload) {
         $scope.$watch('files', function () {
             if (!$scope.files) return;
             $scope.files.forEach(function (file) {

@@ -81,6 +81,10 @@
     margin-top: 8px;
 }
 
+upload-image .btn {
+    margin: 8px 0 0;
+}
+
 add-figures {
     margin: 0;
     padding: 0;
@@ -195,4 +199,8 @@ ul.menu li:hover a {
 .item:hover {
     cursor: pointer;
     background-color: rgba(0, 187, 135, 0.9);
+}
+
+.btn-show , .btn-save {
+    margin: 0 18px 5px;
 }

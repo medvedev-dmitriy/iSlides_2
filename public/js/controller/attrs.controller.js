@@ -14,7 +14,5 @@
         $scope.getStyle = function ($index, selectedSlide){
             $scope.$emit('style', AttrsService.getStyle($index, $attrs, selectedSlide));
         }
-
-
     }
 })();

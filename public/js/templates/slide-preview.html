@@ -1,6 +1,6 @@
 <ul class="list-group" dnd-container>
     <li class="list-group-item" dnd-sortable ng-repeat="slide in slides track by $index">
-        {{slideAnimation[$index]}}
+        Animation: {{slideAnimation[$index]}}
         <div ng-click="changeSlide($index)"
              class="slide" ng-class="aspectRatio == '4x3' ? 'slidePreview4x3' : 'slidePreview16x9'"
              style="{{'background:' + slidebg.color}}">
