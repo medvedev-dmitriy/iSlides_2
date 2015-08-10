@@ -80,13 +80,13 @@ module.exports = function(app) {
 
     app.post('/images', function(req, res){
         console.log('save images');
-        console.log(req.body.presentation);
-        var presentation = req.body.presentation;
+        console.log(req.body.images);
+        var images = req.body.images;
         var insertQuery = "INSERT INTO images (username, images) VALUES(?, ?) ON DUPLICATE KEY UPDATE \
                            username=VALUES(username), images=VALUES(images)";
         connection.query(insertQuery,[
-            presentation.username,
-            presentation.images], function(err, rows){
+            images.username,
+            images.images], function(err, rows){
             if (err) throw err;
         });
 

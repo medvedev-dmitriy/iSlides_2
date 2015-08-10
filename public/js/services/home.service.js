@@ -6,7 +6,8 @@
             '$http',
             '$location',
             'PresentationService',
-            function ($http, $location, PresentationService) {
+            '$rootScope',
+            function ($http, $location, PresentationService, $rootScope) {
                 var HomeService = {};
 
                 HomeService.presentations = [];
@@ -25,6 +26,11 @@
                     $http.get('/presentations', { params: { user: user }})
                         .success(success)
                         .error(error);
+                    $http.get('/images',{params: {user: user}})
+                        .success(function(data){
+                            $rootScope.photos = JSON.parse(data[0].images);
+                        })
+                        .error();
                 };
 
                 HomeService.deletePresentation = function(id){

@@ -51,5 +51,9 @@
             return hasFile ? "dragover" : "dragover-err";
         };
 
+        $scope.deleteImage = function (index){
+            $rootScope.photos.splice(index,1);
+        };
+
     };
 })();

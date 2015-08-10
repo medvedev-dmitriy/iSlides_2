@@ -69,7 +69,6 @@
         $scope.loadPresentation = function(user){
             return HomeService.loadPresentation(user,
                     function(data){
-                        console.log(data);
                         PresentationService.presentations = data;
                         $scope.presentations = PresentationService.presentations;
                     },

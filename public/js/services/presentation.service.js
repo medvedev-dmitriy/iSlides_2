@@ -6,7 +6,8 @@
             '$http',
             '$location',
             '$sce',
-            function ($http, $location, $sce) {
+            '$rootScope',
+            function ($http, $location, $sce, $rootScope) {
                 var PresentationService = {};
 
                 PresentationService.presentations = [];
@@ -24,6 +25,14 @@
                     })
                         .success(console.log('success http save'))
                         .error(console.log('error http save'));
+                    $http.post('/images', {
+                        images: {
+                            username: user,
+                            images: JSON.stringify($rootScope.photos)
+                        }
+                    })
+                        .success()
+                        .error();
                 };
 
                 PresentationService.create = function (presentation,username) {

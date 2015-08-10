@@ -57,13 +57,13 @@
         <div class="col-lg-2 col-md-2">
             <div class="slider clearfix" ng-controller="PhotoUploadController">
                 <p ng-if="photos.length === 0 || !photos">No photos were added yet.</p>
-                <div class="slide-item" ng-repeat="photo in photos" ng-hide="delete">
+                <div class="slide-item" ng-repeat="photo in photos track by $index">
                     <div>
                         <cl-image public-id="{{photo.public_id}}" class="image"  height="100" crop="fit" quality="80" format="jpg"/>
                     </div>
                     <div class="buttons">
                         <a class="btn btn-success" ng-click="addImage(photo.secure_url)">Add</a>
-                        <a class="btn btn-danger"  ng-click="delete=true">Delete</a>
+                        <a class="btn btn-danger"  ng-click="deleteImage($index)">Delete</a>
                     </div>
                 </div>
             </div>
