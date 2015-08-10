@@ -27,11 +27,9 @@
 <div class="container-fluid" id="home" ng-class="{'list' : layoutMode == 0}">
     <h1>Home</h1>
     <div class="btn btn-success" ng-click="loadPresentation(user.username)">load</div>
-    <div class="btn btn-success" ng-click="toggle()">cteate</div>
-    <div class="btn btn-success" ng-click="show()">show</div>
-    <div class="btn btn-success" ng-click="cleanList()">cleanList</div>
+
     <p ng-if="presentations.length === 0 || !presentations">No presentations were added yet.</p>
-    <div class="row" ng-repeat="presentation in presentations track by $index">
+    <div class="row scale-fade" ng-repeat="presentation in presentations track by $index">
         <div class="col-md-4">
             <h2>{{presentation.presentation_name}}</h2>
             <h4>{{presentation.presid}}</h4>

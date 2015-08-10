@@ -167,7 +167,11 @@ ul.menu li:hover a {
     transform: scale(0.2,0.2);
 }
 
-.isInFullScreen {
-    position: relative;
-    transform: scale(1.4,1.4);
+.show {
+    margin: 60px 0 0;
+    transform: scale(1.2,1.2);
+}
+
+.center {
+    margin: 0 auto;
 }

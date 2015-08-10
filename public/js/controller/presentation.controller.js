@@ -143,5 +143,12 @@
         $scope.show = function(){
             return PresentationService.show($routeParams.index);
         };
+
+        $scope.goFullscreen = function () {
+            if (Fullscreen.isEnabled())
+                Fullscreen.cancel();
+            else
+                Fullscreen.all();
+        };
     };
 })();
