@@ -8,7 +8,7 @@ connection.query('USE ' + dbconfig.database);
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.images_table + '`( \
     `username` VARCHAR(20) NOT NULL, \
-    `images` MEDIUMTEXT NOT NULL, \
+    `images` MEDIUMTEXT, \
         PRIMARY KEY (`username`), \
     UNIQUE INDEX `id_UNIQUE` (`username` ASC) \
 );');

@@ -102,7 +102,10 @@
         };
 
         $scope.down = function (index) {
-            slideTools.splice(index,1);
+            if(index === undefined || index === null || index < 0) return;
+            var tmp = slideTools[index];
+            slideTools[index] = slideTools[index - 1];
+            slideTools[index - 1] = tmp;
         };
 
         $scope.toBackground = function (index) {
