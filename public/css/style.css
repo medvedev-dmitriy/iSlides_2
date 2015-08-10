@@ -173,6 +173,7 @@ ul.menu li:hover a {
 }
 
 .center {
+    position: relative;
     margin: 0 auto;
 }
 

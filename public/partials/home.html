@@ -29,12 +29,12 @@
     <div ng-init="loadPresentation(user.username)"></div>
 
     <p ng-if="presentations.length === 0 || !presentations">No presentations were added yet.</p>
-    <ul class="item-container scale-fade" ng-repeat="presentation in presentations track by $index" >
+    <ul class="item-container scale-fade" ng-repeat="presentation in presentations track by $index" ng-hide="delete">
         <li class="item list" href="#/presentation/edit/{{presentation.presid}}">
             <h2>Name: {{presentation.presentation_name}}</h2>
             <h2>Aspect ratio: {{presentation.presentation_aspectratio}}</h2>
             <a class="btn btn-default" href="#/presentation/edit/{{presentation.presid}}" role="button">Edit &raquo;</a>
-            <a class="btn btn-danger" role="button" ng-click="deletePresentation(presentation.id)">Delete</a>
+            <a class="btn btn-danger" role="button" ng-click="deletePresentation(presentation.id,$index);delete=true">Delete</a>
         </li>
     </ul>
 </div>

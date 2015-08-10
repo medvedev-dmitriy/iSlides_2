@@ -14,7 +14,6 @@
 
                 PresentationService.save = function(slides, user, index, color){
                     PresentationService.presentations[index] = slides;
-                    console.log(color);
                     $http.post('/presentationUpdate', {
                         presentation:{
                             context: JSON.stringify(slides),
@@ -59,7 +58,6 @@
                 };
 
                 PresentationService.show = function(presid){
-                    console.log('show ' + presid);
                     return $location.path('/show/' + presid);
                 };
 

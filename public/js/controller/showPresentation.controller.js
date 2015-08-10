@@ -19,7 +19,8 @@
         $scope.tools = PresentationService.tools;
         $scope.figures = PresentationService.figures;
         $scope.font = PresentationService.font;
-        $scope.slidebg = { color: PresentationService.presentations[$routeParams.presid].presentation_background || PresentationService.figures.colors[0] };
+        $scope.slidebg = { color: PresentationService.presentations[$routeParams.presid].presentation_background ||
+                           PresentationService.figures.colors[0] };
         $scope.aspectRatio = PresentationService.presentations[$routeParams.presid].presentation_aspectratio ||
             PresentationService.presentations[$routeParams.presid].aspectRatio;
 

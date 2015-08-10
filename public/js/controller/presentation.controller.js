@@ -26,6 +26,8 @@
         $scope.slidebg = { color: PresentationService.presentations[$routeParams.index].presentation_background || PresentationService.figures.colors[0] };
         $scope.aspectRatio = PresentationService.presentations[$routeParams.index].presentation_aspectratio ||
                              PresentationService.presentations[$routeParams.index].aspectRatio;
+        //$scope.slideAnimation = PresentationService.presentation[$routeParams.index].slide_animation ||
+        //                        PresentationService.presentation[$routeParams.index].slideAnimation;
 
         if( PresentationService.presentations[$routeParams.index].presentation_content != null &&
             PresentationService.presentations[$routeParams.index].presentation_content != undefined) {
@@ -40,11 +42,7 @@
 
 
         $scope.$on('style', function (event, data) {
-            console.log($scope.slides);
-            console.log(data);
             $scope.slides[data.selectedSlide][data.index].style = data.style;
-            console.log(data);
-            console.log($scope.slides);
         });
 
         $scope.addSlide = function (){
@@ -131,7 +129,6 @@
         };
 
         $scope.save = function (username) {
-            console.log($scope.slides);
             return PresentationService.save($scope.slides,username, $routeParams.index, $scope.slidebg.color);
         };
 

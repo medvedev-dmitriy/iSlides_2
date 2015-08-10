@@ -10,17 +10,11 @@
             function ($http, $location, PresentationService, $rootScope) {
                 var HomeService = {};
 
-                HomeService.presentations = [];
 
                 HomeService.createPresentation = function () {
                     $location.path('/create');
                 };
 
-                HomeService.addPresentation = function (presentation) {
-                    presentation.number = HomeService.presentation.length;
-                    HomeService.presentation.push(presentation);
-                    return presentation;
-                };
 
                 HomeService.loadPresentation = function(user, success, error){
                     $http.get('/presentations', { params: { user: user }})
@@ -33,10 +27,9 @@
                         .error();
                 };
 
-                HomeService.deletePresentation = function(id){
-                    $http.delete('/presentation',{params: {id: id}})
-                        .success()
-                        .error();
+                HomeService.deletePresentation = function(id,index){
+                    PresentationService.presentations.splice(index,1);
+                    $http.delete('/presentation',{params: {id: id}});
                 };
 
                 return HomeService;

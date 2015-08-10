@@ -1,6 +1,4 @@
-<!--<select name="figure.color" class="form-control" ng-model="slide.color" ng-change="changeBackgroundColor(slide.color)">-->
-    <!--<option ng-repeat="figure in figures.colors" value="{{figure}}">{{figure}}</option>-->
-<!--</select>-->
+
 <button class="btn btn-success upload-video" data-toggle="modal" data-target="#colorModal">
     Bg-Color
 </button>
@@ -15,13 +13,6 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <!--<div class="rectangle"-->
-                         <!--ng-model="slide.color"-->
-                         <!--ng-repeat="figure in figures.colors"-->
-                         <!--style="background: {{figure}}"-->
-                         <!--ng-class="{ 'selected-class': $index == selectedIndex }"-->
-                         <!--ng-click="itemClicked($index)">-->
-                    <!--</div>-->
                     <div class="colorwheel center-block" ng-colorwheel="{ size: 150, segments: 120 }" ng-model="color"> </div>
                 </div>
             </div>
